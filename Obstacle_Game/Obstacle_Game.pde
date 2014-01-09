@@ -12,7 +12,7 @@ void draw(){
   o.display();
   o.move();
   m.display();
-  m.move();
+  //m.move();
   m.keyPressed();
   
   

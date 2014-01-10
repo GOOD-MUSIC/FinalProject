@@ -9,13 +9,13 @@ class Reward{
     d = 25;
   }
   
-  void display(){
-//    if(o.loc.x == loc.x){
-//      loc.set(width, height-75);
-//    }
-//    else{
-//      loc.set(width, height-30);
-//    }
+  void display(Obstacle obstacle){
+    if(obstacle.loc.x == loc.x){
+      loc.set(width, height-75);
+    }
+    else{
+      loc.set(width, height-30);
+    }
     ellipse(loc.x, loc.y, d,d);
   }
   

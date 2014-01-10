@@ -5,8 +5,8 @@ int oTime;
 int rTime;
 float frequency = 100;
 
-void setup(){
-  size(800,400);
+void setup() {
+  size(800, 400);
   colorMode(HSB, 360, 100, 100, 100);
   oTime = millis();
   rTime = millis();
@@ -15,34 +15,41 @@ void setup(){
   m = new Mover();
 }
 
-void draw(){
+void draw() {
   background(0);
-  if(millis() - oTime >= 250*frequency){
+  if (millis() - oTime >= 100*frequency) {
     oTime = millis();
     o.add(new Obstacle());
     frequency -= .5;
   }
-  if(millis() - rTime >= 50*frequency){
+  if (millis() - rTime >= 30*frequency) {
     rTime = millis();
     r.add(new Reward());
   }
-  for(int i = o.size()-1; i>=0; i--){
+  for (int i = o.size()-1; i>=0; i--) {
     Obstacle obs = o.get(i);
     obs.display();
     obs.move();
-    if(obs.loc.x <= 0){
-      o.remove(i);
-    }
   }
-  for(int i = r.size()-1; i>=0; i--){
-    Reward rew = r.get(i);
-    rew.display();
+  for (int j = r.size()-1; j>=0; j--) {
+    Reward rew = r.get(j);
+    Obstacle obs = o.get(o.size()-1);
+    rew.display(obs);
     rew.move();
-    if(rew.loc.x <= 0){
-      r.remove(i);
-    }
+//    if (obs.loc.x <= -75) {
+//      o.remove(i);
+//      r.remove(j);
+//    }
   }
+  //  for (int i = r.size()-1; i>=0; i--) {
+  //    Reward rew = r.get(i);
+  //    rew.display();
+  //    rew.move();
+  //    if (rew.loc.x <= -75) {
+  //      r.remove(i);
+  //    }
+  //  }
   m.display();
   m.move();
-
 }
+

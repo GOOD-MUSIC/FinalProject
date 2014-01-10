@@ -3,6 +3,7 @@ ArrayList<Obstacle> o = new ArrayList<Obstacle>();
 Mover m;
 int oTime;
 int rTime;
+float frequency = 100;
 
 void setup(){
   size(800,400);
@@ -16,11 +17,12 @@ void setup(){
 
 void draw(){
   background(0);
-  if(millis() - oTime >= 2000){
+  if(millis() - oTime >= 250*frequency){
     oTime = millis();
     o.add(new Obstacle());
+    frequency -= .5;
   }
-  if(millis() - rTime >= 1000){
+  if(millis() - rTime >= 50*frequency){
     rTime = millis();
     r.add(new Reward());
   }
@@ -34,7 +36,7 @@ void draw(){
   }
   for(int i = r.size()-1; i>=0; i--){
     Reward rew = r.get(i);
-    rew.display(o);
+    rew.display();
     rew.move();
     if(rew.loc.x <= 0){
       r.remove(i);
@@ -42,5 +44,5 @@ void draw(){
   }
   m.display();
   m.move();
-  m.keyPressed(); 
+
 }

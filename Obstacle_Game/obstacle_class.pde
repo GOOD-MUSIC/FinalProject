@@ -15,8 +15,5 @@ class Obstacle {
   
   void move() {
     loc.add(vel);
-    if (loc.x <= 0){
-      loc.set(width, height-50);
-    }
   }
 }

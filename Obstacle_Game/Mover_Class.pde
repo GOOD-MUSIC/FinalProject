@@ -1,10 +1,14 @@
 class Mover {
   PVector loc;
   int d;
+  float g;
+  float up;
 
   Mover() {
     loc = new PVector(0, height-25);
     d = 50;
+    g = .001;
+    up = 5;
   }
 
   void display() {
@@ -12,22 +16,20 @@ class Mover {
   }
   void move() {
     if (loc.y < height-25) {
-       loc.y+=1;
+      loc.y+=1;
+      up = 5-g;
     }
-  }
-  void keyPressed() {
-    if (key == 'a') {
-      loc.x-=5;
+    if (keyPressed == true && key == 'a' && loc.x>0+d/2){
+      loc.x -=5;
     }
-    if (key == 'd') {
+    if (keyPressed == true && key == 'd' && loc.x<width-d/2){
       loc.x+=5;
     }
-    if (key == 'w') {
-      loc.y-=5;
+    if (keyPressed == true && key == 'w' && loc.y>0+d/2){
+      loc.y-=up;
     }
-    if (key == 's') {
+    if (keyPressed == true && key == 's' && loc.y<height-d/2){
       loc.y+=5;
     }
   }
 }
-

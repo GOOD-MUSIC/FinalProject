@@ -9,7 +9,8 @@
 	(1/2 A)
 
 Project Description
- Our game is called Celebrity Adventure. 
+
+Our game is called Celebrity Adventure. 
  	Before the game begins, players will have the option to choose which celebrity they would like as a player
 from four different options: Kanye West, Taylor Swift, Kim Kardashian, and Miley Cyrus.  Each character will have
 his or her own game screen similar to that of a Mario game.  The game screens are obstacle courses specific to the

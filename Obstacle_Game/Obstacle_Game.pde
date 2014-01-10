@@ -17,7 +17,7 @@ void setup() {
 
 void draw() {
   background(0);
-  if (millis() - oTime >= 100*frequency) {
+  if (millis() - oTime >= 75*frequency) {
     oTime = millis();
     o.add(new Obstacle());
     frequency -= .5;
@@ -36,10 +36,10 @@ void draw() {
     Obstacle obs = o.get(o.size()-1);
     rew.display(obs);
     rew.move();
-//    if (obs.loc.x <= -75) {
-//      o.remove(i);
-//      r.remove(j);
-//    }
+    //    if (obs.loc.x <= -75) {
+    //      o.remove(i);
+    //      r.remove(j);
+    //    }
   }
   //  for (int i = r.size()-1; i>=0; i--) {
   //    Reward rew = r.get(i);

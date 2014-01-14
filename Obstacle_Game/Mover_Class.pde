@@ -6,13 +6,24 @@ class Mover {
 
   Mover() {
     loc = new PVector(d/2, height-25);
-    d = 50;
+    d = 150;
     g = .01;
     up = 5;
   }
 
   void display() {
-    ellipse(loc.x, loc.y, d, d);
+    if(kanye == true){
+     image(Kanye,loc.x,loc.y,90,190); 
+    }
+    if(kim == true){
+     image(Kim,loc.x,loc.y,150,200); 
+    }
+    if(taylor == true){
+     image(Taylor,loc.x,loc.y,150,225); 
+    }
+    if(miley == true){
+     image(Miley,loc.x,loc.y,150,200); 
+    }
   }
   void move() {
     if (loc.y < height-25) {

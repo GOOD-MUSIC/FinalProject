@@ -6,9 +6,9 @@ int rTime;
 float frequency = 100;
 
 boolean kanye = false;
-boolean kim = true;
+boolean kim = false;
 boolean taylor = false;
-boolean miley = false;
+boolean miley = true;
 PImage Kanye;
 PImage Kim;
 PImage Taylor;

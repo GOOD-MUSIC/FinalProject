@@ -16,13 +16,13 @@ class Mover {
      image(Kanye,loc.x,loc.y,90,190); 
     }
     if(kim == true){
-     image(Kim,loc.x,loc.y,120,180); 
+     image(Kim,loc.x,loc.y,150,200); 
     }
     if(taylor == true){
      image(Taylor,loc.x,loc.y,150,225); 
     }
     if(miley == true){
-     image(Miley,loc.x,loc.y,d,d); 
+     image(Miley,loc.x,loc.y,150,200); 
     }
   }
   void move() {

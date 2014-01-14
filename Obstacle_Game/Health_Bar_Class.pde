@@ -1,2 +1,11 @@
 class HealthBar{
-  int h;
+  int health;
+  
+  Health() {
+    
+  }
+  
+  void displayHealth() {
+   text("Health", 
+    rect( 
+  }

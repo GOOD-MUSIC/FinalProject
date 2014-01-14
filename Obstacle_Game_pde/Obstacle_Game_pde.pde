@@ -7,7 +7,7 @@ int rTime;
 float frequency = 100;
 
 void setup() {
-  size(800, 400);
+  size(1000, 500);
   colorMode(HSB, 360, 100, 100, 100);
   oTime = millis();
   rTime = millis();

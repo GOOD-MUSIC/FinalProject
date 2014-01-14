@@ -5,9 +5,9 @@ class Mover {
   float up;
 
   Mover() {
-    loc = new PVector(0, height-25);
+    loc = new PVector(d/2, height-25);
     d = 50;
-    g = .001;
+    g = .01;
     up = 5;
   }
 

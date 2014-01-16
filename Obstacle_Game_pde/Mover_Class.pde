@@ -8,17 +8,11 @@ class Mover {
 
   Mover() {
     loc = new PVector(d/2, height-25);
-<<<<<<< HEAD:Obstacle_Game/Mover_Class.pde
     d = 150;
-    g = .01;
-    up = 5;
-=======
     up = new PVector(0,-5);
     left = new PVector(-5, 0);
     right = new PVector(5, 0);
     down = new PVector(0, 5);
-    d = 50;
->>>>>>> origin/Game:Obstacle_Game_pde/Mover_Class.pde
   }
 
   void display() {

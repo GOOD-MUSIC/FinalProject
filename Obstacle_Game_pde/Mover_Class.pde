@@ -8,15 +8,26 @@ class Mover {
 
   Mover() {
     loc = new PVector(d/2, height-25);
+    d = 150;
     up = new PVector(0,-5);
     left = new PVector(-5, 0);
     right = new PVector(5, 0);
     down = new PVector(0, 5);
-    d = 50;
   }
 
   void display() {
-    ellipse(loc.x, loc.y, d, d);
+    if(kanye == true){
+     image(Kanye,loc.x,loc.y,90,190); 
+    }
+    if(kim == true){
+     image(Kim,loc.x,loc.y,150,200); 
+    }
+    if(taylor == true){
+     image(Taylor,loc.x,loc.y,150,225); 
+    }
+    if(miley == true){
+     image(Miley,loc.x,loc.y,150,200); 
+    }
   }
   void move() {
     if (keyPressed == true && key == 'a' && loc.x>0+d/2){

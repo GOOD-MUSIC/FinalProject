@@ -4,13 +4,13 @@ class Mover {
   PVector left;
   PVector right;
   PVector down;
-  int d;
   int x;
   int y;
 
   Mover() {
-    loc = new PVector(d/2, height-25);
-    d = 150;
+    x = 130;
+    y = 200;
+    loc = new PVector(0, height-y);
     up = new PVector(0,-5);
     left = new PVector(-5, 0);
     right = new PVector(5, 0);
@@ -34,16 +34,16 @@ class Mover {
     }
   }
   void move() {
-    if (keyPressed == true && key == 'a' && loc.x>0+d/2){
+    if (keyPressed == true && key == 'a' && loc.x>0){
       loc.add(left);
     }
-    if (keyPressed == true && key == 'd' && loc.x<width-d/2){
+    if (keyPressed == true && key == 'd' && loc.x<width-x){
       loc.add(right);
     }
-    if (keyPressed == true && key == 'w' && loc.y>0+d/2){
+    if (keyPressed == true && key == 'w' && loc.y>0){
       loc.add(up);
     }
-    if (keyPressed == true && key == 's' && loc.y<height-d/2){
+    if (keyPressed == true && key == 's' && loc.y<height-y){
       loc.add(down);
     }
   }

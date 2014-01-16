@@ -13,8 +13,8 @@ boolean start = false;
 boolean game = true;
 boolean stop = false;
 boolean kanye = false;
-boolean kim = false;
-boolean taylor = true;
+boolean kim = true;
+boolean taylor = false;
 boolean miley = false;
 PImage Kanye;
 PImage Kim;
@@ -44,7 +44,6 @@ void draw() {
     textSize(15);
     fill(255);
     text("HOW TO PLAY \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", directionsx, directionsy);
-    //>>>>>>> origin/Start/End
   }
   if (game == true) {
     background(0);

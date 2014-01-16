@@ -10,6 +10,7 @@ class Obstacle {
   }
   
   void display() {
+    fill(360,100,100);
     ellipse(loc.x, loc.y, d, d);
   }
   

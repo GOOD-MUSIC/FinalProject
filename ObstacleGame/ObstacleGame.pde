@@ -1,6 +1,7 @@
 ArrayList<Reward> r = new ArrayList<Reward>();
 ArrayList<Reward> ro = new ArrayList<Reward>();
 ArrayList<Obstacle> o = new ArrayList<Obstacle>();
+HealthBar h;
 Mover m;
 int oTime;
 int rTime;
@@ -8,12 +9,9 @@ float frequency = 100;
 int directionsx = 400;
 int directionsy = 50;
 int health = 100;
-int healthx = 0;
-int healthy = 100;
 boolean start = false;
 boolean game = true;
 boolean stop = false;
-
 boolean kanye = false;
 boolean kim = true;
 boolean taylor = false;
@@ -32,6 +30,7 @@ void setup() {
   r.add(new Reward(width, height-50));
   ro.add(new Reward(width, height-100));
   m = new Mover();
+  h = new HealthBar();
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -58,7 +57,7 @@ void draw() {
       ro.add(new Reward(width, height-100));
       frequency -= 1;
     }
-    text("Health: " + health, healthx, healthy);
+   
     for (int j = r.size()-1; j>=0; j--) {
       Reward rew = r.get(j);
       rew.display();
@@ -74,6 +73,8 @@ void draw() {
     }
     m.display();
     m.move();
+    h.display();
+    
   }
 }
 

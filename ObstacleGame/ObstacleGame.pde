@@ -16,8 +16,8 @@ boolean stop = false;
 
 boolean kanye = false;
 boolean kim = false;
-boolean taylor = false;
-boolean miley = true;
+boolean taylor = true;
+boolean miley = false;
 PImage Kanye;
 PImage Kim;
 PImage Taylor;

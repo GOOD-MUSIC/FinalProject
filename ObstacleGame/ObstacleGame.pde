@@ -6,12 +6,11 @@ Mover m;
 int oTime;
 int rTime;
 float frequency = 100;
-int directionsx = 400;
-int directionsy = 50;
 int health = 100;
 boolean start = true;
 boolean game = false;
 boolean stop = false;
+boolean instructions = false;
 boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
@@ -26,12 +25,20 @@ PImage kimHead;
 PImage taylorHead;
 PImage mileyHead;
 int heady = 375;
-int kanyex = 150;
-int kimx = 350;
-int taylorx = 550;
-int mileyx = 750;
+int kanyex = 200;
+int kimx = 400;
+int taylorx = 600;
+int mileyx = 800;
 int headw = 100;
 int headh = 100;
+int instructionsx = 400;
+int instructionsy = 300;
+int instructionsw = 200;
+int instructionsh = 30;
+int playbuttonx = 500;
+int playbuttony = 400;
+int playbuttonw = 100;
+int playbuttonh = 50;
 
 void setup() {
   size(1000, 500);
@@ -57,17 +64,35 @@ void setup() {
 void draw() {
   if (start == true) {
     background(StartScreen);
+    fill(0);
+    rect(instructionsx, instructionsy, instructionsw, instructionsh);
     textAlign(CENTER);
     textSize(30);
-    fill(0,0,100);
-    text("Welcome To...",150,175);
+    fill(0, 0, 100);
+    text("Welcome To...", 150, 75);
+    textSize(15);
+    text("INSTRUCTIONS", 500, 320);
+    fill(0);
+    String p = "Choose a Player:";
+    text(p, 50, heady+25, 100, 100);
     rectMode(CORNER);
     image(kanyeHead, kanyex, heady);
     image(kimHead, kimx, heady);
     image(taylorHead, taylorx, heady);
     image(mileyHead, mileyx, heady);
-    //    text("HOW TO PLAY \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", directionsx, directionsy);
   }
+
+  if (instructions == true) {
+    background(0);
+    fill(0, 0, 100);
+    textAlign(CENTER);
+    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", width/2, height/2);
+    rectMode(CENTER);
+    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+    fill(0);
+    text("PLAY", width/2, height-100);
+  }
+
   if (game == true) {
     background(0);
     if (millis() - rTime >= 30*frequency) {
@@ -104,18 +129,30 @@ void mousePressed() {
   if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kanye = true;
+    start = false;
   }
   if (start==true && mouseX<kimx+headw && mouseX>kimx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kim = true;
+    start = false;
   }
   if (start==true && mouseX<taylorx+headw && mouseX>taylorx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     taylor = true;
+    start = false;
   }
   if (start==true && mouseX<mileyx+headw && mouseX>mileyx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     miley = true;
+    start = false;
+  }
+  if (start==true && mouseX<instructionsx+instructionsw && mouseX>instructionsx && mouseY<instructionsy+instructionsh && mouseY>instructionsy) {
+    instructions = true;
+    start = false;
+  }
+  if (instructions==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+    instructions = false;
+    start = true;
   }
 }
 

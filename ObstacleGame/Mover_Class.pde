@@ -24,15 +24,12 @@ class Mover {
       image(Kanye, loc.x, loc.y, x, y);
     }
     if (kim == true) {
-
       image(Kim, loc.x, loc.y, x, y);
     }
     if (taylor == true) {
-
       image(Taylor, loc.x, loc.y, x, y);
     }
     if (miley == true) {
-
       image(Miley, loc.x, loc.y, x, y);
     }
   }

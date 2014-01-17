@@ -99,9 +99,19 @@ void draw() {
     fill(0);
     text("PLAY", width/2, height-100);
   }
-
   if (game == true) {
-    background(0);
+    if (kanye==true) {
+      background(kanyeBackground);
+    }
+    if (kim==true) {
+      background(kimBackground);
+    }
+    if (taylor==true) {
+      background(taylorBackground);
+    }
+    if (miley==true) {
+      background(mileyBackground);
+    }
     if (millis() - rTime >= 30*frequency) {
       rTime = millis();
       r.add(new Reward(width, height-50));
@@ -130,18 +140,6 @@ void draw() {
     m.move();
     h.display();
   }
-/*  if (kanye==true) {
-    background(kanyeBackground);
-  }
-  if (kim==true) {
-    background(kimBackground);
-  }
-  if (taylor==true) {
-    background(taylorBackground);
-  }
-  if (miley==true) {
-    background(mileyBackground);
-  }*/
 }
 
 void mousePressed() {

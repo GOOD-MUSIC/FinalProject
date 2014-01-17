@@ -9,17 +9,29 @@ float frequency = 100;
 int directionsx = 400;
 int directionsy = 50;
 int health = 100;
-boolean start = false;
-boolean game = true;
+boolean start = true;
+boolean game = false;
 boolean stop = false;
 boolean kanye = false;
-boolean kim = true;
+boolean kim = false;
 boolean taylor = false;
 boolean miley = false;
 PImage Kanye;
 PImage Kim;
 PImage Taylor;
 PImage Miley;
+PImage StartScreen;
+PImage kanyeHead;
+PImage kimHead;
+PImage taylorHead;
+PImage mileyHead;
+int heady = 375;
+int kanyex = 150;
+int kimx = 350;
+int taylorx = 550;
+int mileyx = 750;
+int headw = 100;
+int headh = 100;
 
 void setup() {
   size(1000, 500);
@@ -35,15 +47,25 @@ void setup() {
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
   Miley = loadImage("MileyCyrus.png");
+  StartScreen = loadImage("hollywood.jpg");
+  kanyeHead = loadImage("KanyeHeadShot.jpg");
+  kimHead = loadImage("kim head shot.jpg");
+  taylorHead = loadImage("taylor headshot.jpg");
+  mileyHead = loadImage("miley headshot.jpg");
 }
 
 void draw() {
   if (start == true) {
-    background(0);
+    background(StartScreen);
     textAlign(CENTER);
     textSize(15);
-    fill(255);
-    text("HOW TO PLAY \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", directionsx, directionsy);
+    fill(0);
+    rectMode(CORNER);
+    image(kanyeHead, kanyex, heady);
+    image(kimHead, kimx, heady);
+    image(taylorHead, taylorx, heady);
+    image(mileyHead, mileyx, heady);
+    //    text("HOW TO PLAY \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", directionsx, directionsy);
   }
   if (game == true) {
     background(0);
@@ -57,7 +79,7 @@ void draw() {
       ro.add(new Reward(width, height-100));
       frequency -= 1;
     }
-   
+
     for (int j = r.size()-1; j>=0; j--) {
       Reward rew = r.get(j);
       rew.display();
@@ -74,7 +96,25 @@ void draw() {
     m.display();
     m.move();
     h.display();
-    
+  }
+}
+
+void mousePressed() {
+  if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
+    game = true;
+    kanye = true;
+  }
+  if (start==true && mouseX<kimx+headw && mouseX>kimx && mouseY<heady+headh && mouseY>heady) {
+    game = true;
+    kim = true;
+  }
+  if (start==true && mouseX<taylorx+headw && mouseX>taylorx && mouseY<heady+headh && mouseY>heady) {
+    game = true;
+    taylor = true;
+  }
+  if (start==true && mouseX<mileyx+headw && mouseX>mileyx && mouseY<heady+headh && mouseY>heady) {
+    game = true;
+    miley = true;
   }
 }
 

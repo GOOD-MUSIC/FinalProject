@@ -10,11 +10,17 @@ int health = 100;
 boolean start = true;
 boolean game = false;
 boolean stop = false;
+boolean lose = false;
+boolean win = false;
 boolean instructions = false;
 boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
 boolean miley = false;
+PImage kanyeBackground;
+PImage kimBackground;
+PImage taylorBackground;
+PImage mileyBackground;
 PImage Kanye;
 PImage Kim;
 PImage Taylor;
@@ -24,6 +30,8 @@ PImage kanyeHead;
 PImage kimHead;
 PImage taylorHead;
 PImage mileyHead;
+PImage winScreen;
+PImage loseScreen;
 int heady = 375;
 int kanyex = 200;
 int kimx = 400;
@@ -46,10 +54,13 @@ void setup() {
   oTime = millis();
   rTime = millis();
   o.add(new Obstacle());
-  r.add(new Reward(width, height-50));
-  ro.add(new Reward(width, height-100));
+  ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
+  kanyeBackground = loadImage("StageBackground.jpg");
+  kimBackground = loadImage("JennerBackground.jpg");
+  taylorBackground = loadImage("NashvilleBackground.jpg");
+  mileyBackground = loadImage("CyrusBackground.jpg");
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -59,6 +70,8 @@ void setup() {
   kimHead = loadImage("kim head shot.jpg");
   taylorHead = loadImage("taylor headshot.jpg");
   mileyHead = loadImage("miley headshot.jpg");
+  winScreen = loadImage("winTemp.jpg");
+  loseScreen = loadImage("loseTemp.png");
 }
 
 void draw() {
@@ -92,9 +105,19 @@ void draw() {
     fill(0);
     text("PLAY", width/2, height-100);
   }
-
   if (game == true) {
-    background(0);
+    if (kanye==true) {
+      background(kanyeBackground);
+    }
+    if (kim==true) {
+      background(kimBackground);
+    }
+    if (taylor==true) {
+      background(taylorBackground);
+    }
+    if (miley==true) {
+      background(mileyBackground);
+    }
     if (millis() - rTime >= 30*frequency) {
       rTime = millis();
       r.add(new Reward(width, height-50));
@@ -102,7 +125,7 @@ void draw() {
     if (millis() - oTime >= 75*frequency) {
       oTime = millis();
       o.add(new Obstacle());
-      ro.add(new Reward(width, height-100));
+      ro.add(new Reward(width, height-200));
       frequency -= 1;
     }
 
@@ -122,6 +145,21 @@ void draw() {
     m.display();
     m.move();
     h.display();
+  }
+  if (lose == true) {
+   background(loseScreen);
+   textAlign(CENTER);
+   textSize(40);
+   fill(0);
+   text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+  }
+  
+  if(win == true){
+    background(winScreen);
+    textAlign(CENTER);
+    textSize(40);
+    fill(0,0,100);
+    text("Congratulations! You have made it in Hollywood!",width/2,height-100);
   }
 }
 

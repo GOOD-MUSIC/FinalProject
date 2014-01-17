@@ -46,8 +46,7 @@ void setup() {
   oTime = millis();
   rTime = millis();
   o.add(new Obstacle());
-  r.add(new Reward(width, height-50));
-  ro.add(new Reward(width, height-100));
+  ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
   Kanye = loadImage("YeezyCharacter.png");
@@ -102,7 +101,7 @@ void draw() {
     if (millis() - oTime >= 75*frequency) {
       oTime = millis();
       o.add(new Obstacle());
-      ro.add(new Reward(width, height-100));
+      ro.add(new Reward(width, height-200));
       frequency -= 1;
     }
 

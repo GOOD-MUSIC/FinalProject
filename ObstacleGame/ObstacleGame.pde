@@ -58,8 +58,9 @@ void draw() {
   if (start == true) {
     background(StartScreen);
     textAlign(CENTER);
-    textSize(15);
-    fill(0);
+    textSize(30);
+    fill(0,0,100);
+    text("Welcome To...",150,175);
     rectMode(CORNER);
     image(kanyeHead, kanyex, heady);
     image(kimHead, kimx, heady);

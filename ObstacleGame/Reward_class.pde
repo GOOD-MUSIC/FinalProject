@@ -17,15 +17,19 @@ class Reward {
 
   void display() {
     if (kanye==true) {
+//      background(kanyeBackground);
       image(kanyeReward, loc.x, loc.y);
     }
     if (kim==true) {
+  //    background(kimBackground);
       image(kimReward, loc.x, loc.y);
     }
     if (taylor==true) {
+    //  background(taylorBackground);
       image(taylorReward, loc.x, loc.y);
     }
     if (miley==true) {
+      //background(mileyBackground);
       image(mileyReward, loc.x, loc.y);
     }
   }

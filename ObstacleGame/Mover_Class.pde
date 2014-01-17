@@ -8,7 +8,7 @@ class Mover {
   float y;
   float grav=2.5; 
   float vel = 0;
-  
+
   Mover() {
     x = 130;
     y = 200;
@@ -24,12 +24,15 @@ class Mover {
       image(Kanye, loc.x, loc.y, x, y);
     }
     if (kim == true) {
+
       image(Kim, loc.x, loc.y, x, y);
     }
     if (taylor == true) {
+
       image(Taylor, loc.x, loc.y, x, y);
     }
     if (miley == true) {
+
       image(Miley, loc.x, loc.y, x, y);
     }
   }

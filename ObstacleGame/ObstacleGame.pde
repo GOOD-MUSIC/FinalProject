@@ -15,6 +15,10 @@ boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
 boolean miley = false;
+PImage kanyeBackground;
+PImage kimBackground;
+PImage taylorBackground;
+PImage mileyBackground;
 PImage Kanye;
 PImage Kim;
 PImage Taylor;
@@ -49,6 +53,10 @@ void setup() {
   ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
+  kanyeBackground = loadImage("StageBackground.jpg");
+  kimBackground = loadImage("JennerBackground.jpg");
+  taylorBackground = loadImage("NashvilleBackground.jpg");
+  mileyBackground = loadImage("CyrusBackground.jpg");
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -122,6 +130,18 @@ void draw() {
     m.move();
     h.display();
   }
+/*  if (kanye==true) {
+    background(kanyeBackground);
+  }
+  if (kim==true) {
+    background(kimBackground);
+  }
+  if (taylor==true) {
+    background(taylorBackground);
+  }
+  if (miley==true) {
+    background(mileyBackground);
+  }*/
 }
 
 void mousePressed() {

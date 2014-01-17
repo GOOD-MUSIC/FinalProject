@@ -18,15 +18,19 @@ class Obstacle {
 
   void display() {
     if (kanye==true) {
+  //    background(kanyeBackground);
       image(kanyeObstacle, loc.x, loc.y);
     }
     if (kim==true) {
+    //  background(kimBackground);
       image(kimObstacle, loc.x, loc.y);
     }
     if (taylor==true) {
+      //background(taylorBackground);
       image(taylorObstacle, loc.x, loc.y);
     }
     if (miley==true) {
+     // background(mileyBackground);
       image(mileyObstacle, loc.x, loc.y);
     }
   }

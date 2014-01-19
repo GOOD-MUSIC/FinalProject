@@ -10,11 +10,8 @@ int health = 100;
 boolean start = true;
 boolean game = false;
 boolean stop = false;
-<<<<<<< HEAD
-=======
 boolean lose = false;
 boolean win = false;
->>>>>>> origin/master
 boolean instructions = false;
 boolean kanye = false;
 boolean kim = false;
@@ -33,11 +30,8 @@ PImage kanyeHead;
 PImage kimHead;
 PImage taylorHead;
 PImage mileyHead;
-<<<<<<< HEAD
-=======
 PImage winScreen;
 PImage loseScreen;
->>>>>>> origin/master
 int heady = 375;
 int kanyex = 200;
 int kimx = 400;
@@ -76,11 +70,8 @@ void setup() {
   kimHead = loadImage("kim head shot.jpg");
   taylorHead = loadImage("taylor headshot.jpg");
   mileyHead = loadImage("miley headshot.jpg");
-<<<<<<< HEAD
-=======
   winScreen = loadImage("winTemp.jpg");
   loseScreen = loadImage("loseTemp.png");
->>>>>>> origin/master
 }
 
 void draw() {
@@ -102,7 +93,6 @@ void draw() {
     image(kimHead, kimx, heady);
     image(taylorHead, taylorx, heady);
     image(mileyHead, mileyx, heady);
-<<<<<<< HEAD
   }
 
   if (instructions == true) {
@@ -116,21 +106,6 @@ void draw() {
     text("PLAY", width/2, height-100);
   }
 
-  if (game == true) {
-=======
-  }
-
-  if (instructions == true) {
->>>>>>> origin/master
-    background(0);
-    fill(0, 0, 100);
-    textAlign(CENTER);
-    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", width/2, height/2);
-    rectMode(CENTER);
-    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
-    fill(0);
-    text("PLAY", width/2, height-100);
-  }
   if (game == true) {
     if (kanye==true) {
       background(kanyeBackground);
@@ -172,24 +147,21 @@ void draw() {
     m.move();
     h.display();
   }
-<<<<<<< HEAD
-=======
-  if (lose == true) {
-   background(loseScreen);
-   textAlign(CENTER);
-   textSize(40);
-   fill(0);
-   text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+    if (lose == true) {
+    background(loseScreen);
+    textAlign(CENTER);
+    textSize(40);
+    fill(0);
+    text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
   }
-  
-  if(win == true){
+
+  if (win == true) {
     background(winScreen);
     textAlign(CENTER);
     textSize(40);
-    fill(0,0,100);
-    text("Congratulations! You have made it in Hollywood!",width/2,height-100);
+    fill(0, 0, 100);
+    text("Congratulations! You have made it in Hollywood!", width/2, height-100);
   }
->>>>>>> origin/master
 }
 
 void mousePressed() {

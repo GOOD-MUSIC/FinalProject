@@ -10,11 +10,20 @@ int health = 100;
 boolean start = true;
 boolean game = false;
 boolean stop = false;
+<<<<<<< HEAD
+=======
+boolean lose = false;
+boolean win = false;
+>>>>>>> origin/master
 boolean instructions = false;
 boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
 boolean miley = false;
+PImage kanyeBackground;
+PImage kimBackground;
+PImage taylorBackground;
+PImage mileyBackground;
 PImage Kanye;
 PImage Kim;
 PImage Taylor;
@@ -24,6 +33,11 @@ PImage kanyeHead;
 PImage kimHead;
 PImage taylorHead;
 PImage mileyHead;
+<<<<<<< HEAD
+=======
+PImage winScreen;
+PImage loseScreen;
+>>>>>>> origin/master
 int heady = 375;
 int kanyex = 200;
 int kimx = 400;
@@ -46,10 +60,13 @@ void setup() {
   oTime = millis();
   rTime = millis();
   o.add(new Obstacle());
-  r.add(new Reward(width, height-50));
-  ro.add(new Reward(width, height-100));
+  ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
+  kanyeBackground = loadImage("StageBackground.jpg");
+  kimBackground = loadImage("JennerBackground.jpg");
+  taylorBackground = loadImage("NashvilleBackground.jpg");
+  mileyBackground = loadImage("CyrusBackground.jpg");
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -59,6 +76,11 @@ void setup() {
   kimHead = loadImage("kim head shot.jpg");
   taylorHead = loadImage("taylor headshot.jpg");
   mileyHead = loadImage("miley headshot.jpg");
+<<<<<<< HEAD
+=======
+  winScreen = loadImage("winTemp.jpg");
+  loseScreen = loadImage("loseTemp.png");
+>>>>>>> origin/master
 }
 
 void draw() {
@@ -80,6 +102,7 @@ void draw() {
     image(kimHead, kimx, heady);
     image(taylorHead, taylorx, heady);
     image(mileyHead, mileyx, heady);
+<<<<<<< HEAD
   }
 
   if (instructions == true) {
@@ -94,7 +117,33 @@ void draw() {
   }
 
   if (game == true) {
+=======
+  }
+
+  if (instructions == true) {
+>>>>>>> origin/master
     background(0);
+    fill(0, 0, 100);
+    textAlign(CENTER);
+    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", width/2, height/2);
+    rectMode(CENTER);
+    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+    fill(0);
+    text("PLAY", width/2, height-100);
+  }
+  if (game == true) {
+    if (kanye==true) {
+      background(kanyeBackground);
+    }
+    if (kim==true) {
+      background(kimBackground);
+    }
+    if (taylor==true) {
+      background(taylorBackground);
+    }
+    if (miley==true) {
+      background(mileyBackground);
+    }
     if (millis() - rTime >= 30*frequency) {
       rTime = millis();
       r.add(new Reward(width, height-50));
@@ -102,7 +151,7 @@ void draw() {
     if (millis() - oTime >= 75*frequency) {
       oTime = millis();
       o.add(new Obstacle());
-      ro.add(new Reward(width, height-100));
+      ro.add(new Reward(width, height-200));
       frequency -= 1;
     }
 
@@ -123,6 +172,24 @@ void draw() {
     m.move();
     h.display();
   }
+<<<<<<< HEAD
+=======
+  if (lose == true) {
+   background(loseScreen);
+   textAlign(CENTER);
+   textSize(40);
+   fill(0);
+   text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+  }
+  
+  if(win == true){
+    background(winScreen);
+    textAlign(CENTER);
+    textSize(40);
+    fill(0,0,100);
+    text("Congratulations! You have made it in Hollywood!",width/2,height-100);
+  }
+>>>>>>> origin/master
 }
 
 void mousePressed() {

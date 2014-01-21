@@ -16,6 +16,7 @@ class Reward {
   }
 
   void display() {
+    imageMode(CENTER);
     if (kanye==true) {
       image(kanyeReward, loc.x, loc.y);
     }
@@ -28,9 +29,10 @@ class Reward {
     if (miley==true) {
       image(mileyReward, loc.x, loc.y);
     }
+    imageMode(CORNER);
   }
   void move() {
     loc.add(vel);
-  }
+  }    
 }
 

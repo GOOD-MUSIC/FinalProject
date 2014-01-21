@@ -105,7 +105,6 @@ void draw() {
     fill(0);
     text("PLAY", width/2, height-100);
   }
-
   if (game == true) {
     if (kanye==true) {
       background(kanyeBackground);
@@ -119,21 +118,25 @@ void draw() {
     if (miley==true) {
       background(mileyBackground);
     }
-    if (millis() - rTime >= 30*frequency) {
+    if (millis() - rTime >= 3000) {
       rTime = millis();
       r.add(new Reward(width, height-50));
     }
-    if (millis() - oTime >= 75*frequency) {
+    if (millis() - oTime >= 7500) {
       oTime = millis();
       o.add(new Obstacle());
       ro.add(new Reward(width, height-200));
       frequency -= 1;
     }
-
-    for (int j = r.size()-1; j>=0; j--) {
-      Reward rew = r.get(j);
+    m.display();
+    m.move();
+    for (int d = r.size()-1; d>=0; d--) {
+      Reward rew = r.get(d);
       rew.display();
       rew.move();
+      if (dist(rew.loc.x,0,m.loc.x,0) <= 155 && dist(0, rew.loc.y, 0, m.loc.y) <= 225){
+        r.remove(d);
+      }
     }
     for (int i = o.size()-1; i>=0; i--) {
       Obstacle obs = o.get(i);
@@ -142,12 +145,11 @@ void draw() {
       Reward reward = ro.get(i);
       reward.display();
       reward.move();
+      if (dest(
     }
-    m.display();
-    m.move();
     h.display();
   }
-    if (lose == true) {
+  if (lose == true) {
     background(loseScreen);
     textAlign(CENTER);
     textSize(40);

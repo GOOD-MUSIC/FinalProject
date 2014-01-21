@@ -13,7 +13,7 @@ class Mover {
     x = 130;
     y = 200;
     loc = new PVector(0, height-y);
-    up = new PVector(0, -5);
+    up = new PVector(0, -200);
     left = new PVector(-5, 0);
     right = new PVector(5, 0);
     down = new PVector(0, 5);
@@ -40,7 +40,7 @@ class Mover {
     if (keyPressed == true && key == 'd' && loc.x<width-x) {
       loc.add(right);
     }
-    if (keyPressed == true && key == 'w' && loc.y>0) {
+    if (keyPressed == true && key == 'w' && loc.y>=300) {
       loc.add(up);
     }
     if (keyPressed == true && key == 's' && loc.y<height-y) {
@@ -49,7 +49,7 @@ class Mover {
     if (loc.y+y<height) {
       vel+=grav;
       loc.y+=vel; 
-      vel*=-.9;
+      vel*=-0.001*(height-y);
     }
   }
 }

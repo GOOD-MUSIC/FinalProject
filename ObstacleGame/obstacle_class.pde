@@ -10,8 +10,7 @@ class Obstacle {
     loc = new PVector(width, height-125);
     vel = new PVector(-2, 0);
     kanyeObstacle = loadImage("SwayObstacle.png");
-    kimObstacle = loadImage("SwayObstacle.png");
-    //idk what obstacle belongs to her's---we gotta fix this
+    kimObstacle = loadImage("Kimobstacle.png");
     taylorObstacle = loadImage("HarryStylesObstacle.png");
     mileyObstacle = loadImage("WreckingBallObstacle.png");
   }

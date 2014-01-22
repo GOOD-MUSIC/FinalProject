@@ -5,8 +5,6 @@ HealthBar h;
 Mover m;
 int oTime;
 int rTime;
-float frequency = 100;
-int health = 100;
 boolean start = true;
 boolean game = false;
 boolean stop = false;
@@ -126,15 +124,15 @@ void draw() {
       oTime = millis();
       o.add(new Obstacle());
       ro.add(new Reward(width, height-200));
-      frequency -= 1;
     }
     m.display();
     m.move();
+    h.display();
     for (int d = r.size()-1; d>=0; d--) {
       Reward rew = r.get(d);
       rew.display();
       rew.move();
-      if (dist(rew.loc.x,0,m.loc.x,0) <= 155 && dist(0, rew.loc.y, 0, m.loc.y) <= 225){
+      if (dist(rew.loc.x,0,m.loc.x,0) <= 90 && dist(0, rew.loc.y, 0, m.loc.y) <= 125){
         r.remove(d);
       }
     }
@@ -142,12 +140,18 @@ void draw() {
       Obstacle obs = o.get(i);
       obs.display();
       obs.move();
-      Reward reward = ro.get(i);
+      if(dist(obs.loc.x, 0, m.loc.x,0) <= 127.5 && dist(0, obs.loc.y, 0, m.loc.y) <= 162.5){
+        h.health -= .1;
+      }
+    }
+    for (int j = ro.size()-1; j>=0; j--) {
+      Reward reward = ro.get(j);
       reward.display();
       reward.move();
-      if (dest(
+      if (dist(reward.loc.x,0,m.loc.x,0) <= 90 && dist(0,reward.loc.y, 0, m.loc.y) <=125){
+        ro.remove(j);
+      }
     }
-    h.display();
   }
   if (lose == true) {
     background(loseScreen);

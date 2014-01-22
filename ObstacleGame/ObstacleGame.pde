@@ -57,7 +57,8 @@ void setup() {
   o.add(new Obstacle());
   ro.add(new Reward(width, height-200));
   m = new Mover();
-  h = new HealthBar();;
+  h = new HealthBar();
+  ;
   kanyeBackground = loadImage("StageBackground.jpg");
   kimBackground = loadImage("JennerBackground.jpg");
   taylorBackground = loadImage("NashvilleBackground.jpg");
@@ -119,13 +120,9 @@ void draw() {
     if (miley==true) {
       background(mileyBackground);
     }
-<<<<<<< HEAD
-    fill(0,0,190);
+    fill(0, 0, 190);
     text("Score: " + score, scorex, scorey);
-    if (millis() - rTime >= 30*frequency) {
-=======
     if (millis() - rTime >= 3000) {
->>>>>>> origin/Game
       rTime = millis();
       r.add(new Reward(width, height-50));
     }
@@ -141,24 +138,26 @@ void draw() {
       Reward rew = r.get(d);
       rew.display();
       rew.move();
-      if (dist(rew.loc.x,0,m.loc.x,0) <= 90 && dist(0, rew.loc.y, 0, m.loc.y) <= 125){
+      if (dist(rew.loc.x, 0, m.loc.x, 0) <= 90 && dist(0, rew.loc.y, 0, m.loc.y) <= 125) {
         r.remove(d);
+        score+=1;
       }
     }
     for (int i = o.size()-1; i>=0; i--) {
       Obstacle obs = o.get(i);
       obs.display();
       obs.move();
-      if(dist(obs.loc.x, 0, m.loc.x,0) <= 127.5 && dist(0, obs.loc.y, 0, m.loc.y) <= 162.5){
-        h.health -= .1;
+      if (dist(obs.loc.x, 0, m.loc.x, 0) <= 127.5 && dist(0, obs.loc.y, 0, m.loc.y) <= 162.5) {
+        h.health -= .2;
       }
     }
     for (int j = ro.size()-1; j>=0; j--) {
       Reward reward = ro.get(j);
       reward.display();
       reward.move();
-      if (dist(reward.loc.x,0,m.loc.x,0) <= 90 && dist(0,reward.loc.y, 0, m.loc.y) <=125){
+      if (dist(reward.loc.x, 0, m.loc.x, 0) <= 90 && dist(0, reward.loc.y, 0, m.loc.y) <=125) {
         ro.remove(j);
+        score+=1;
       }
     }
   }

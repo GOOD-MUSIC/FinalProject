@@ -58,7 +58,6 @@ void setup() {
   ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
-  ;
   kanyeBackground = loadImage("StageBackground.jpg");
   kimBackground = loadImage("JennerBackground.jpg");
   taylorBackground = loadImage("NashvilleBackground.jpg");
@@ -148,7 +147,7 @@ void draw() {
       obs.display();
       obs.move();
       if (dist(obs.loc.x, 0, m.loc.x, 0) <= 127.5 && dist(0, obs.loc.y, 0, m.loc.y) <= 162.5) {
-        h.health -= .2;
+        h.health -= .5;
       }
     }
     for (int j = ro.size()-1; j>=0; j--) {
@@ -159,6 +158,14 @@ void draw() {
         ro.remove(j);
         score+=1;
       }
+    }
+    if (h.health <= 0){
+      game = false;
+      lose = true;
+    }
+    if (score >= 40){
+      game = false;
+      win = true;
     }
   }
   if (lose == true) {

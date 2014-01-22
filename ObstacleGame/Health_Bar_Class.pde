@@ -15,9 +15,9 @@ class HealthBar {
     text("Health: " + health/10, healthX, healthY); 
     fill(126, 100, 100);
     rect(healthX-60, healthY + 5, health*.12, 10);
-    if (health<=20) {
+    if (health<=200) {
       fill(360, 100, 100);
-      rect(healthX, healthY + 5, health*.12, 10);
+      rect(healthX-60, healthY + 5, health*.12, 10);
     }
   }
   }

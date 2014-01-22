@@ -12,8 +12,13 @@ class Mover {
   Mover() {
     x = 130;
     y = 200;
+<<<<<<< HEAD
     loc = new PVector(x/2, height-y/2);
     up = new PVector(0, -5);
+=======
+    loc = new PVector(0, height-y);
+    up = new PVector(0, -200);
+>>>>>>> origin/Diya/Game-Tester-Work
     left = new PVector(-5, 0);
     right = new PVector(5, 0);
     down = new PVector(0, 5);
@@ -42,7 +47,11 @@ class Mover {
     if (keyPressed == true && key == 'd' && loc.x<width-x/2) {
       loc.add(right);
     }
+<<<<<<< HEAD
     if (keyPressed == true && key == 'w' && loc.y>0+y/2) {
+=======
+    if (keyPressed == true && key == 'w' && loc.y>=300) {
+>>>>>>> origin/Diya/Game-Tester-Work
       loc.add(up);
     }
     if (keyPressed == true && key == 's' && loc.y<height-y/2) {
@@ -51,7 +60,7 @@ class Mover {
     if (loc.y+y/2<height) {
       vel+=grav;
       loc.y+=vel; 
-      vel*=-.9;
+      vel*=-0.001*(height-y);
     }
   }
 }

@@ -7,7 +7,7 @@ class Obstacle {
   PImage mileyObstacle;
 
   Obstacle() {
-    loc = new PVector(width, height-125);
+    loc = new PVector(width, height-62.5);
     vel = new PVector(-2, 0);
     kanyeObstacle = loadImage("SwayObstacle.png");
     kimObstacle = loadImage("Kimobstacle.png");
@@ -16,6 +16,7 @@ class Obstacle {
   }
 
   void display() {
+    imageMode(CENTER);
     if (kanye==true) {
       image(kanyeObstacle, loc.x, loc.y);
     }
@@ -28,6 +29,7 @@ class Obstacle {
     if (miley==true) {
       image(mileyObstacle, loc.x, loc.y);
     }
+    imageMode(CORNER);
   }
 
   void move() {

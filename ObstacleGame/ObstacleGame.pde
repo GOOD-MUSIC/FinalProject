@@ -5,8 +5,6 @@ HealthBar h;
 Mover m;
 int oTime;
 int rTime;
-float frequency = 100;
-int health = 100;
 boolean start = true;
 boolean game = false;
 boolean stop = false;
@@ -121,50 +119,63 @@ void draw() {
     if (miley==true) {
       background(mileyBackground);
     }
+<<<<<<< HEAD
     fill(0,0,190);
     text("Score: " + score, scorex, scorey);
     if (millis() - rTime >= 30*frequency) {
+=======
+    if (millis() - rTime >= 3000) {
+>>>>>>> origin/Game
       rTime = millis();
       r.add(new Reward(width, height-50));
     }
-    if (millis() - oTime >= 75*frequency) {
+    if (millis() - oTime >= 7500) {
       oTime = millis();
       o.add(new Obstacle());
       ro.add(new Reward(width, height-200));
-      frequency -= 1;
     }
-
-    for (int j = r.size()-1; j>=0; j--) {
-      Reward rew = r.get(j);
+    m.display();
+    m.move();
+    h.display();
+    for (int d = r.size()-1; d>=0; d--) {
+      Reward rew = r.get(d);
       rew.display();
       rew.move();
+      if (dist(rew.loc.x,0,m.loc.x,0) <= 90 && dist(0, rew.loc.y, 0, m.loc.y) <= 125){
+        r.remove(d);
+      }
     }
     for (int i = o.size()-1; i>=0; i--) {
       Obstacle obs = o.get(i);
       obs.display();
       obs.move();
-      Reward reward = ro.get(i);
+      if(dist(obs.loc.x, 0, m.loc.x,0) <= 127.5 && dist(0, obs.loc.y, 0, m.loc.y) <= 162.5){
+        h.health -= .1;
+      }
+    }
+    for (int j = ro.size()-1; j>=0; j--) {
+      Reward reward = ro.get(j);
       reward.display();
       reward.move();
+      if (dist(reward.loc.x,0,m.loc.x,0) <= 90 && dist(0,reward.loc.y, 0, m.loc.y) <=125){
+        ro.remove(j);
+      }
     }
-    m.display();
-    m.move();
-    h.display();
   }
   if (lose == true) {
-   background(loseScreen);
-   textAlign(CENTER);
-   textSize(40);
-   fill(0);
-   text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+    background(loseScreen);
+    textAlign(CENTER);
+    textSize(40);
+    fill(0);
+    text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
   }
-  
-  if(win == true){
+
+  if (win == true) {
     background(winScreen);
     textAlign(CENTER);
     textSize(40);
-    fill(0,0,100);
-    text("Congratulations! You have made it in Hollywood!",width/2,height-100);
+    fill(0, 0, 100);
+    text("Congratulations! You have made it in Hollywood!", width/2, height-100);
   }
 }
 

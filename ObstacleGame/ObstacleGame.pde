@@ -47,6 +47,9 @@ int playbuttonx = 500;
 int playbuttony = 400;
 int playbuttonw = 100;
 int playbuttonh = 50;
+int score = 0;
+int scorex = 100;
+int scorey = 50;
 
 void setup() {
   size(1000, 500);
@@ -56,7 +59,7 @@ void setup() {
   o.add(new Obstacle());
   ro.add(new Reward(width, height-200));
   m = new Mover();
-  h = new HealthBar();
+  h = new HealthBar();;
   kanyeBackground = loadImage("StageBackground.jpg");
   kimBackground = loadImage("JennerBackground.jpg");
   taylorBackground = loadImage("NashvilleBackground.jpg");
@@ -118,6 +121,8 @@ void draw() {
     if (miley==true) {
       background(mileyBackground);
     }
+    fill(0,0,190);
+    text("Score: " + score, scorex, scorey);
     if (millis() - rTime >= 30*frequency) {
       rTime = millis();
       r.add(new Reward(width, height-50));

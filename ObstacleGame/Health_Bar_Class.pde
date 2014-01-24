@@ -5,7 +5,7 @@ class HealthBar {
 
   HealthBar() {
     health = 1000;
-    healthX = 850;
+    healthX = 250;
     healthY = 50;
   }
 

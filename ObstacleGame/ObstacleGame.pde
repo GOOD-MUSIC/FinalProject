@@ -10,6 +10,7 @@ boolean game = false;
 boolean stop = false;
 boolean lose = false;
 boolean win = false;
+boolean pause = false;
 boolean instructions = false;
 boolean kanye = false;
 boolean kim = false;
@@ -45,6 +46,10 @@ int playbuttonx = 500;
 int playbuttony = 400;
 int playbuttonw = 100;
 int playbuttonh = 50;
+int pausebuttonx = 750;
+int pausebuttony = 25;
+int pausebuttonw = 100;
+int pausebuttonh = 50;
 int score = 0;
 int scorex = 100;
 int scorey = 50;
@@ -159,14 +164,35 @@ void draw() {
         score+=1;
       }
     }
-    if (h.health <= 0){
+    if (h.health <= 0) {
       game = false;
       lose = true;
     }
-    if (score >= 40){
+    if (score >= 40) {
       game = false;
       win = true;
     }
+    fill(240, 100, 100);
+    rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
+    fill(360);
+    text("Pause", width-200, 60);
+  }
+  if(pause == true){
+    if (kanye==true) {
+      background(kanyeBackground);
+    }
+    if (kim==true) {
+      background(kimBackground);
+    }
+    if (taylor==true) {
+      background(taylorBackground);
+    }
+    if (miley==true) {
+      background(mileyBackground);
+    }
+    fill(240, 80, 80, 75);
+    rect(0,0,width,height);
+    
   }
   if (lose == true) {
     background(loseScreen);
@@ -213,6 +239,10 @@ void mousePressed() {
   if (instructions==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
     instructions = false;
     start = true;
+  }
+  if (game == true && mouseX < pausebuttonx + pausebuttonw && mouseX > pausebuttonx && mouseY < pausebuttony + pausebuttonh && mouseY > pausebuttony) {
+    game = false;
+    pause = true;
   }
 }
 

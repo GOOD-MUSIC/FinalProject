@@ -33,6 +33,6 @@ class Reward {
   }
   void move() {
     loc.add(vel);
-  }    
+  }
 }
 

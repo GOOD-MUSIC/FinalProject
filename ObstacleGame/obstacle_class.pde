@@ -36,5 +36,3 @@ class Obstacle {
     loc.add(vel);
   }
 }
-}
-

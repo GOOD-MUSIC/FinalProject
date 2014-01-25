@@ -303,4 +303,5 @@ void mousePressed() {
     game = false;
     start = true;
   }
+}
 

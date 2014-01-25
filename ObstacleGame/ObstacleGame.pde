@@ -217,7 +217,6 @@ void draw() {
     textSize(30);
     textAlign(CENTER);
     text("PLAY", width/2, height-90);
-    
   }
   if (restart == true) {
     start = true;
@@ -294,5 +293,14 @@ void mousePressed() {
     game = false;
     start = true;
   }
-}
+  if (lose==true && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
+    restart = true;
+    game = false;
+    start = true;
+  }
+  if (win==true && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
+    restart = true;
+    game = false;
+    start = true;
+  }
 

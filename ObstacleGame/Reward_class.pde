@@ -1,6 +1,8 @@
 class Reward {
   PVector loc;
-  PVector vel;
+  PVector vel1;
+  PVector vel2;
+  PVector vel3;
   PImage kanyeReward;
   PImage kimReward;
   PImage taylorReward;
@@ -8,7 +10,9 @@ class Reward {
 
   Reward(float x, float y) {
     loc = new PVector(x, y);
-    vel = new PVector(-2, 0);
+    vel1 = new PVector(-1, 0);
+    vel2 = new PVector(-2, 0);
+    vel3 = new PVector(-3, 0);
     kanyeReward = loadImage("YeezusAlbumBonus.jpg");
     kimReward = loadImage("NorthWestBonus.png");
     taylorReward = loadImage("GuitarBonus.png");
@@ -32,7 +36,15 @@ class Reward {
     imageMode(CORNER);
   }
   void move() {
-    loc.add(vel);
-  }    
+    if (level1 == true) {
+      loc.add(vel1);
+    }
+    if (level2 == true) {
+     loc.add(vel2); 
+    }
+    if (level3 == true) {
+     loc.add(vel3); 
+    }
+  }
 }
 

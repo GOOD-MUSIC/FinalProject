@@ -1,6 +1,8 @@
 class Obstacle {
   PVector loc;
-  PVector vel;
+  PVector vel1;
+  PVector vel2;
+  PVector vel3;
   PImage kanyeObstacle;
   PImage kimObstacle;
   PImage taylorObstacle;
@@ -8,7 +10,9 @@ class Obstacle {
 
   Obstacle() {
     loc = new PVector(width, height-62.5);
-    vel = new PVector(-2, 0);
+    vel1 = new PVector(-3, 0);
+    vel2 = new PVector(-2, 0);
+    vel3 = new PVector(-1/2, 0);
     kanyeObstacle = loadImage("SwayObstacle.png");
     kimObstacle = loadImage("Kimobstacle.png");
     taylorObstacle = loadImage("HarryStylesObstacle.png");
@@ -33,7 +37,15 @@ class Obstacle {
   }
 
   void move() {
-    loc.add(vel);
+    if (level1 == true) {
+      loc.add(vel1);
+    }
+    if (level2 == true) {
+      loc.add(vel2);
+    }
+    if (level3 == true) {
+      loc.add(vel3);
+    }
   }
 }
 

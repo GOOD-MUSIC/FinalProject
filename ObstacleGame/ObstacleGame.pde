@@ -53,7 +53,7 @@ int pausebuttonh = 50;
 int score = 0;
 int scorex = 100;
 int scorey = 50;
-
+PFont font;
 void setup() {
   size(1000, 500);
   colorMode(HSB, 360, 100, 100, 100);
@@ -78,9 +78,11 @@ void setup() {
   mileyHead = loadImage("miley headshot.jpg");
   winScreen = loadImage("winTemp.jpg");
   loseScreen = loadImage("loseTemp.png");
+  font = loadFont("FinalProjectFont2014.vlw");
 }
 
 void draw() {
+  textFont(font);
   if (start == true) {
     background(StartScreen);
     fill(0);

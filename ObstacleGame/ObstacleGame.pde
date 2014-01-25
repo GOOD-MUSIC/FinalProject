@@ -184,7 +184,7 @@ void draw() {
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
     text("Pause", width-200, 60);
-    if ( score>= 5) {
+    if ( score>= 2) {
       game = false;
       decision = true;
     }

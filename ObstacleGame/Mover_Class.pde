@@ -42,8 +42,7 @@ class Mover {
     if (keyPressed == true && key == 'd' && loc.x<width-x/2) {
       loc.add(right);
     }
-    if (keyPressed == true && key == 'w' && loc.y>=300) {
-
+    if (keyPressed == true && key == 'w' && loc.y>=400) {
       loc.add(up);
     }
     if (keyPressed == true && key == 's' && loc.y<height-y/2) {

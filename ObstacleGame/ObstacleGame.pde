@@ -51,12 +51,16 @@ int pausebuttonx = 800;
 int pausebuttony = 50;
 int pausebuttonw = 100;
 int pausebuttonh = 50;
-int restartbuttonx = 950;
+int restartbuttonx = 925;
 int restartbuttony = 50;
 int restartbuttonw = 100;
 int restartbuttonh = 50;
+int endrestartbuttonx = 910;
+int endrestartbuttony = 50;
+int endrestartbuttonw = 150;
+int endrestartbuttonh = 70;
 int score = 0;
-int scorex = 100;
+int scorex = 50;
 int scorey = 50;
 
 void setup() {
@@ -114,7 +118,7 @@ void draw() {
     rectMode(CENTER);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
-    text("PLAY", width/2, height-100);
+    text("PLAY", width/2, height-95);
   }
   if (game == true) {
     if (kanye==true) {
@@ -130,6 +134,7 @@ void draw() {
       background(mileyBackground);
     }
     fill(0, 0, 190);
+    textSize(25);
     text("Score: " + score, scorex, scorey);
     if (millis() - rTime >= 3000) {
       rTime = millis();
@@ -186,7 +191,7 @@ void draw() {
     rectMode(CENTER);
     rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
     fill(360);
-    text("RESTART", width-50, 60);
+    text("RESTART", width-75, 60);
   }
   if (pause == true) {
     if (kanye==true) {
@@ -206,30 +211,44 @@ void draw() {
     fill(0);
     textSize(50);
     text("GAME PAUSED", width/2, height/2);
-    rectMode(CENTER);
-    fill(0, 0, 100);
+    fill(255);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
     textSize(30);
+    textAlign(CENTER);
     text("PLAY", width/2, height-90);
+    
   }
   if (restart == true) {
     start = true;
+    score = 0;
   }
   if (lose == true) {
     background(loseScreen);
     textAlign(CENTER);
     textSize(40);
     fill(0);
-    text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+    text("You lost. I guess Hollywood's not for everyone.", width/2, height-150);
+    fill(240, 99, 1);
+    rectMode(CENTER);
+    rect(endrestartbuttonx, endrestartbuttony, endrestartbuttonw, endrestartbuttonh);
+    fill(240, 0, 99);
+    textSize(30);
+    text("RESTART", width-90, 60);
   }
 
   if (win == true) {
     background(winScreen);
     textAlign(CENTER);
     textSize(40);
-    fill(0, 0, 100);
-    text("Congratulations! You have made it in Hollywood!", width/2, height-100);
+    fill(0);
+    text("Congratulations! You have made it in Hollywood!", width/2, height-150);
+    fill(0);
+    rectMode(CENTER);
+    rect(endrestartbuttonx, endrestartbuttony, endrestartbuttonw, endrestartbuttonh);
+    fill(255, 0, 0);
+    textSize(30);
+    text("RESTART", width-90, 60);
   }
 }
 

@@ -36,24 +36,40 @@ class Decision {
       question = "Sway has just asked you why you don't \n empower yourself and do it yourself.  \n What do you say?";
       rect1text = "YOU AIN'T GOT THE ANSWERS!";
       rect2text = "Good idea dawg!";
+      //for the 2nd decision from Level 1 to Level 2
+      //question = "A paparazzo is interrogating you at \n the airport. How do you react?";
+      //rect1text = "Ignore him and keep walking";
+      //rect2text = "Beat him up!";
     }
     if (kim==true) {
       background(kimBackground);
       question = "Your baby is about to be born. \n What do you name it?";
       rect1text = "North";
       rect2text = "Shontelle";
+      //for the 2nd decision from Level 1 to Level 2
+      //question = "Your manager wants to cancel Keeping \n Up With The Kardashians. \n What do you say?";
+      //rect1text = "No! I love my show.";
+      //rect2text = "Go for it.";
     }
     if (taylor==true) {
       background(taylorBackground);
       question = "You just broke up with Harry Styles. \n What do you do?";
       rect1text = "Write a song about it";
       rect2text = "Move on";
+      //for the 2nd decision from Level 1 to Level 2
+      //question = "Fans are protesting agains your \n new pop image. \n How do you react?";
+      //rect1text = "Return to country music";
+      //rect2text = "Stay true to you";
     }
     if (miley==true) {
       background(mileyBackground);
       question = "Liam Hemsworth broke off your \n engagement. What do you do?";
       rect1text = "Get a haircut";
       rect2text = "Write a song about it";
+      //for the 2nd decision from Level 1 to Level 2
+      //question = "You bleached your eyebrows and \n no longer look human. \n What do you do?";
+      //rect1text = "Rock the new look";
+      //rect2text = "Redye them brown";
     }
     textAlign(CENTER);
     fill(360);
@@ -134,7 +150,7 @@ class Decision {
         text(rect2text, rect2x + rect2w/2, rect2y + recth/2);
       }
     }
-     if (miley) {
+    if (miley) {
       if (mouseX >= rect1x && mouseX<= rect1x+rect1w && mouseY >= rect1y && mouseY <= rect1y+recth) {
         fill(360);
         rect(rect1x, rect1y, rect1w, recth);
@@ -148,7 +164,7 @@ class Decision {
         text(rect2text, rect2x + rect2w/2, rect2y + recth/2);
       }
     }
-      rectMode(CENTER);
-    }
+    rectMode(CENTER);
   }
+}
 

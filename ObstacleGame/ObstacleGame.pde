@@ -119,6 +119,7 @@ void draw() {
     if (kanye==true) {
       background(kanyeBackground);
       if(score ==5){
+        game = false;
         decision();
       }
     }

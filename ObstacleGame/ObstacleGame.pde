@@ -121,6 +121,7 @@ void draw() {
     text("PLAY", width/2, height-95);
   }
   if (game == true) {
+    restart = false;
     if (kanye==true) {
       background(kanyeBackground);
     }
@@ -221,6 +222,7 @@ void draw() {
   if (restart == true) {
     start = true;
     score = 0;
+    h.health = 100;
   }
   if (lose == true) {
     background(loseScreen);
@@ -288,18 +290,18 @@ void mousePressed() {
     pause = false;
     game = true;
   }
-  if (restart==false && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
+  if (restart==false && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
     restart = !restart;
     game = false;
     start = true;
   }
-  if (lose==true && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
-    restart = true;
+  if (restart==false && lose==true && mouseX<endrestartbuttonx+endrestartbuttonw/2 && mouseX>endrestartbuttonx-endrestartbuttonw/2 && mouseY<endrestartbuttony+endrestartbuttonh/2 && mouseY>endrestartbuttony-endrestartbuttonh/2) {
+    restart = !restart;
     game = false;
     start = true;
   }
-  if (win==true && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
-    restart = true;
+  if (restart==false && win==true && mouseX<endrestartbuttonx+endrestartbuttonw/2 && mouseX>endrestartbuttonx-endrestartbuttonw/2 && mouseY<endrestartbuttony+endrestartbuttonh/2 && mouseY>endrestartbuttony-endrestartbuttonh/2) {
+    restart = !restart;
     game = false;
     start = true;
   }

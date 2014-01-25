@@ -235,6 +235,16 @@ void draw() {
 }
 
 void mousePressed() {
+  //if (decision==true && mouseX >= d.rect1x && mouseX<= d.rect1x+d.rect1w && mouseY >= d.rect1y && mouseY <= d.rect1y+d.recth) {
+  //decision = false;
+  // game = true;
+  //    score+= 1;
+  //  }
+  //  if (decision==true && mouseX >= d.rect2x && mouseX<= d.rect2x+d.rect2w && mouseY >= d.rect2y && mouseY <= d.rect2y+d.recth) {
+  //   decision = false;
+  //  game = true;
+  //  h.health-=1;
+  // }
   if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kanye = true;

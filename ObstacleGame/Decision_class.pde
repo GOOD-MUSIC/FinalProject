@@ -138,7 +138,7 @@ class Decision {
       if (mouseX >= rect1x && mouseX<= rect1x+rect1w && mouseY >= rect1y && mouseY <= rect1y+recth) {
         fill(360);
         rect(rect1x, rect1y, rect1w, recth);
-        fill(275, 100, 100v);
+        fill(275, 100, 100);
         text(rect1text, rect1x + rect1w/2, rect1y + recth/2);
       }
       if (mouseX >= rect2x && mouseX<= rect2x+rect2w && mouseY >= rect2y && mouseY <= rect2y+recth) {

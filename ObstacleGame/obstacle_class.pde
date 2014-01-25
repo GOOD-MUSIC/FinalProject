@@ -10,9 +10,9 @@ class Obstacle {
 
   Obstacle() {
     loc = new PVector(width, height-62.5);
-    vel1 = new PVector(-3, 0);
-    vel2 = new PVector(-2, 0);
-    vel3 = new PVector(-1/2, 0);
+    vel1 = new PVector(-2, 0);
+    vel2 = new PVector(-3, 0);
+    vel3 = new PVector(-5, 0);
     kanyeObstacle = loadImage("SwayObstacle.png");
     kimObstacle = loadImage("Kimobstacle.png");
     taylorObstacle = loadImage("HarryStylesObstacle.png");

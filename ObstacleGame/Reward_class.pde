@@ -10,9 +10,9 @@ class Reward {
 
   Reward(float x, float y) {
     loc = new PVector(x, y);
-    vel1 = new PVector(-1, 0);
-    vel2 = new PVector(-2, 0);
-    vel3 = new PVector(-3, 0);
+    vel1 = new PVector(-2, 0);
+    vel2 = new PVector(-3, 0);
+    vel3 = new PVector(-5, 0);
     kanyeReward = loadImage("YeezusAlbumBonus.jpg");
     kimReward = loadImage("NorthWestBonus.png");
     taylorReward = loadImage("GuitarBonus.png");

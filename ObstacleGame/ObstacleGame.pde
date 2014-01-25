@@ -11,6 +11,7 @@ boolean stop = false;
 boolean lose = false;
 boolean win = false;
 boolean pause = false;
+boolean restart = false;
 boolean instructions = false;
 boolean kanye = false;
 boolean kim = false;
@@ -50,6 +51,10 @@ int pausebuttonx = 800;
 int pausebuttony = 50;
 int pausebuttonw = 100;
 int pausebuttonh = 50;
+int restartbuttonx = 950;
+int restartbuttony = 50;
+int restartbuttonw = 100;
+int restartbuttonh = 50;
 int score = 0;
 int scorex = 100;
 int scorey = 50;
@@ -176,7 +181,12 @@ void draw() {
     rectMode(CENTER);
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
-    text("Pause", width-200, 60);
+    text("PAUSE", width-200, 60);
+    fill(240, 100, 100);
+    rectMode(CENTER);
+    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+    fill(360);
+    text("RESTART", width-50, 60);
   }
   if (pause == true) {
     if (kanye==true) {
@@ -197,11 +207,30 @@ void draw() {
     textSize(50);
     text("GAME PAUSED", width/2, height/2);
     rectMode(CENTER);
-    fill(0,0,100);
+    fill(0, 0, 100);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
     textSize(30);
     text("PLAY", width/2, height-90);
+  }
+  if (restart == true) {
+    if (kanye==true) {
+      background(kanyeBackground);
+    }
+    if (kim==true) {
+      background(kimBackground);
+    }
+    if (taylor==true) {
+      background(taylorBackground);
+    }
+    if (miley==true) {
+      background(mileyBackground);
+    }
+    fill(240, 80, 80, 75);
+    rectMode(CENTER);
+    rect(width/2, height/2, width, height);
+    fill(0);
+    textSize(50);
   }
   if (lose == true) {
     background(loseScreen);
@@ -249,13 +278,18 @@ void mousePressed() {
     instructions = false;
     start = true;
   }
-  if (game == true && mouseX < pausebuttonx + pausebuttonw/2 && mouseX > pausebuttonx - pausebuttonw/2 && mouseY < pausebuttony + pausebuttonh/2 && mouseY > pausebuttony-pausebuttonh/2) {
+  if (game == true && mouseX<pausebuttonx+pausebuttonw/2 && mouseX>pausebuttonx-pausebuttonw/2 && mouseY<pausebuttony+pausebuttonh/2 && mouseY>pausebuttony-pausebuttonh/2) {
     game = false;
     pause = true;
   }
   if (pause==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
     pause = false;
     game = true;
+  }
+  if (restart==false && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
+    restart = !restart;
+    game = false;
+    start = true;
   }
 }
 

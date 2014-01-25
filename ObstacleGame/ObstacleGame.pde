@@ -3,6 +3,7 @@ ArrayList<Reward> ro = new ArrayList<Reward>();
 ArrayList<Obstacle> o = new ArrayList<Obstacle>();
 HealthBar h;
 Mover m;
+Decision d;
 int oTime;
 int rTime;
 boolean start = true;
@@ -12,6 +13,7 @@ boolean lose = false;
 boolean win = false;
 boolean pause = false;
 boolean instructions = false;
+boolean decision = false;
 boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
@@ -64,6 +66,7 @@ void setup() {
   ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
+  d = new Decision();
   kanyeBackground = loadImage("StageBackground.jpg");
   kimBackground = loadImage("JennerBackground.jpg");
   taylorBackground = loadImage("NashvilleBackground.jpg");
@@ -118,10 +121,6 @@ void draw() {
   if (game == true) {
     if (kanye==true) {
       background(kanyeBackground);
-      if(score ==5){
-        game = false;
-        decision();
-      }
     }
     if (kim==true) {
       background(kimBackground);
@@ -185,6 +184,13 @@ void draw() {
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
     text("Pause", width-200, 60);
+    if ( score>= 5) {
+      game = false;
+      decision = true;
+    }
+  }
+  if (decision == true) {
+    d.display();
   }
   if (pause == true) {
     if (kanye==true) {
@@ -205,7 +211,7 @@ void draw() {
     textSize(50);
     text("GAME PAUSED", width/2, height/2);
     rectMode(CENTER);
-    fill(0,0,100);
+    fill(0, 0, 100);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
     textSize(30);

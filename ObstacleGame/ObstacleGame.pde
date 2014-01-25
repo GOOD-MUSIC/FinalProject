@@ -214,23 +214,7 @@ void draw() {
     text("PLAY", width/2, height-90);
   }
   if (restart == true) {
-    if (kanye==true) {
-      background(kanyeBackground);
-    }
-    if (kim==true) {
-      background(kimBackground);
-    }
-    if (taylor==true) {
-      background(taylorBackground);
-    }
-    if (miley==true) {
-      background(mileyBackground);
-    }
-    fill(240, 80, 80, 75);
-    rectMode(CENTER);
-    rect(width/2, height/2, width, height);
-    fill(0);
-    textSize(50);
+    start = true;
   }
   if (lose == true) {
     background(loseScreen);

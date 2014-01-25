@@ -53,6 +53,7 @@ int pausebuttonh = 50;
 int score = 0;
 int scorex = 100;
 int scorey = 50;
+int kwSize = 50;
 PFont font;
 void setup() {
   size(1000, 500);
@@ -117,6 +118,9 @@ void draw() {
   if (game == true) {
     if (kanye==true) {
       background(kanyeBackground);
+      if(score ==5){
+        decision();
+      }
     }
     if (kim==true) {
       background(kimBackground);

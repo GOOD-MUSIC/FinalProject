@@ -16,10 +16,23 @@ boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
 boolean miley = false;
-PImage kanyeBackground;
-PImage kimBackground;
-PImage taylorBackground;
-PImage mileyBackground;
+boolean level1 = false;
+boolean level2 = false;
+boolean level3 = false;
+boolean levelWin1 = false;
+boolean levelWin2 = false;
+PImage kanyeBackground1;
+PImage kimBackground1;
+PImage taylorBackground1;
+PImage mileyBackground1;
+PImage kanyeBackground2;
+PImage kimBackground2;
+PImage taylorBackground2;
+PImage mileyBackground2;
+PImage kanyeBackground3;
+PImage kimBackground3;
+PImage taylorBackground3;
+PImage mileyBackground3;
 PImage Kanye;
 PImage Kim;
 PImage Taylor;
@@ -63,10 +76,20 @@ void setup() {
   ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
-  kanyeBackground = loadImage("StageBackground.jpg");
-  kimBackground = loadImage("JennerBackground.jpg");
-  taylorBackground = loadImage("NashvilleBackground.jpg");
-  mileyBackground = loadImage("CyrusBackground.jpg");
+  kanyeBackground1 = loadImage("StageBackground.jpg");
+  kimBackground1 = loadImage("JennerBackground.jpg");
+  taylorBackground1 = loadImage("NashvilleBackground.jpg");
+  mileyBackground1 = loadImage("CyrusBackground.jpg");
+  //TEMPORARY BACKGROUNDS*****
+  kanyeBackground2 = loadImage("winTemp.jpg");
+  kimBackground2 = loadImage("winTemp.jpg");
+  taylorBackground2 = loadImage("winTemp.jpg");
+  mileyBackground2 = loadImage("winTemp.jpg");
+  kanyeBackground3 = loadImage("winTemp.jpg");
+  kimBackground3 = loadImage("winTemp.jpg");
+  taylorBackground3 = loadImage("winTemp.jpg");
+  mileyBackground3 = loadImage("winTemp.jpg");
+  //TEMPORARY
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -112,17 +135,49 @@ void draw() {
     text("PLAY", width/2, height-100);
   }
   if (game == true) {
-    if (kanye==true) {
-      background(kanyeBackground);
+    if (kanye == true) {
+      if (level1 == true) {
+        background(kanyeBackground1);
+      }
+      if (level2 == true) {
+        background(kanyeBackground2);
+      }
+      if (level3 == true) {
+        background(kanyeBackground3);
+      }
     }
-    if (kim==true) {
-      background(kimBackground);
+    if (kim == true) {
+      if (level1 == true) {
+        background(kimBackground1);
+      }
+      if (level2 == true) {
+        background(kimBackground2);
+      }
+      if (level3 == true) {
+        background(kimBackground3);
+      }
     }
-    if (taylor==true) {
-      background(taylorBackground);
+    if (taylor == true) {
+      if (level1 == true) {
+        background(taylorBackground1);
+      }
+      if (level2 == true) {
+        background(taylorBackground2);
+      }
+      if (level3 == true) {
+        background(taylorBackground3);
+      }
     }
-    if (miley==true) {
-      background(mileyBackground);
+    if (miley == true) {
+      if (level1 == true) {
+        background(mileyBackground1);
+      }
+      if (level2 == true) {
+        background(mileyBackground2);
+      }
+      if (level3 == true) {
+        background(mileyBackground3);
+      }
     }
     fill(0, 0, 190);
     text("Score: " + score, scorex, scorey);
@@ -179,17 +234,49 @@ void draw() {
     text("Pause", width-200, 60);
   }
   if (pause == true) {
-    if (kanye==true) {
-      background(kanyeBackground);
+    if (kanye == true) {
+      if (level1 == true) {
+        background(kanyeBackground1);
+      }
+      if (level2 == true) {
+        background(kanyeBackground2);
+      }
+      if (level3 == true) {
+        background(kanyeBackground3);
+      }
     }
-    if (kim==true) {
-      background(kimBackground);
+    if (kim == true) {
+      if (level1 == true) {
+        background(kimBackground1);
+      }
+      if (level2 == true) {
+        background(kimBackground2);
+      }
+      if (level3 == true) {
+        background(kimBackground3);
+      }
     }
-    if (taylor==true) {
-      background(taylorBackground);
+    if (taylor == true) {
+      if (level1 == true) {
+        background(taylorBackground1);
+      }
+      if (level2 == true) {
+        background(taylorBackground2);
+      }
+      if (level3 == true) {
+        background(taylorBackground3);
+      }
     }
-    if (miley==true) {
-      background(mileyBackground);
+    if (miley == true) {
+      if (level1 == true) {
+        background(mileyBackground1);
+      }
+      if (level2 == true) {
+        background(mileyBackground2);
+      }
+      if (level3 == true) {
+        background(mileyBackground3);
+      }
     }
     fill(240, 80, 80, 75);
     rect(width/2, height/2, width, height);
@@ -197,11 +284,43 @@ void draw() {
     textSize(50);
     text("GAME PAUSED", width/2, height/2);
     rectMode(CENTER);
-    fill(0,0,100);
+    fill(0, 0, 100);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
     textSize(30);
     text("PLAY", width/2, height-90);
+  }
+  if (score==10) {
+    level1 = false;
+    levelWin1 = true;
+  }
+  if (levelWin1 == true) {
+    background(360, 100, 100);
+    fill(0);
+    textSize(50);
+    text("you won level 1", width/2, height/2);
+    rectMode(CENTER);
+    fill(0, 0, 100);
+    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+    fill(0);
+    textSize(30);
+    text("continue", width/2, height-90);
+  }
+  if (score == 20) {
+    level2 = false;
+    levelWin2 = true;
+  }
+  if (levelWin2 == true) {
+    background(360, 100, 100);
+    fill(0);
+    textSize(50);
+    text("you won level 2", width/2, height/2);
+    rectMode(CENTER);
+    fill(0, 0, 100);
+    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+    fill(0);
+    textSize(30);
+    text("continue", width/2, height-90);
   }
   if (lose == true) {
     background(loseScreen);
@@ -210,7 +329,6 @@ void draw() {
     fill(0);
     text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
   }
-
   if (win == true) {
     background(winScreen);
     textAlign(CENTER);
@@ -225,6 +343,7 @@ void mousePressed() {
     game = true;
     kanye = true;
     start = false;
+    level1 = true;
   }
   if (start==true && mouseX<kimx+headw && mouseX>kimx && mouseY<heady+headh && mouseY>heady) {
     game = true;
@@ -256,6 +375,14 @@ void mousePressed() {
   if (pause==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
     pause = false;
     game = true;
+  }
+  if (levelWin1==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+    level2 = true;
+    levelWin1 = false;
+  }
+  if (levelWin2==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+    level3 = true;
+    levelWin2 = false;
   }
 }
 

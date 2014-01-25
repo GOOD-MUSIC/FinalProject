@@ -5,13 +5,12 @@ HealthBar h;
 Mover m;
 int oTime;
 int rTime;
-float frequency = 100;
-int health = 100;
 boolean start = true;
 boolean game = false;
 boolean stop = false;
 boolean lose = false;
 boolean win = false;
+boolean pause = false;
 boolean instructions = false;
 boolean kanye = false;
 boolean kim = false;
@@ -47,6 +46,13 @@ int playbuttonx = 500;
 int playbuttony = 400;
 int playbuttonw = 100;
 int playbuttonh = 50;
+int pausebuttonx = 800;
+int pausebuttony = 50;
+int pausebuttonw = 100;
+int pausebuttonh = 50;
+int score = 0;
+int scorex = 100;
+int scorey = 50;
 
 void setup() {
   size(1000, 500);
@@ -99,7 +105,7 @@ void draw() {
     background(0);
     fill(0, 0, 100);
     textAlign(CENTER);
-    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n Jump and duck to collect bonuses and avoid obstacles. \n HAVE FUN.", width/2, height/2);
+    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Jump and move to collect bonuses and avoid obstacles. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n a-move left; s-move down; d-move right; w-jump up \n Increase your score to 40 before the health bar reaches 0 to win the game! \n HAVE FUN.", width/2, 220);
     rectMode(CENTER);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
@@ -118,48 +124,99 @@ void draw() {
     if (miley==true) {
       background(mileyBackground);
     }
-    if (millis() - rTime >= 30*frequency) {
+    fill(0, 0, 190);
+    text("Score: " + score, scorex, scorey);
+    if (millis() - rTime >= 3000) {
       rTime = millis();
       r.add(new Reward(width, height-50));
     }
-    if (millis() - oTime >= 75*frequency) {
+    if (millis() - oTime >= 7500) {
       oTime = millis();
       o.add(new Obstacle());
       ro.add(new Reward(width, height-200));
-      frequency -= 1;
     }
-
-    for (int j = r.size()-1; j>=0; j--) {
-      Reward rew = r.get(j);
+    m.display();
+    m.move();
+    h.display();
+    for (int d = r.size()-1; d>=0; d--) {
+      Reward rew = r.get(d);
       rew.display();
       rew.move();
+      if (dist(rew.loc.x, 0, m.loc.x, 0) <= 90 && dist(0, rew.loc.y, 0, m.loc.y) <= 125) {
+        r.remove(d);
+        score+=1;
+      }
     }
     for (int i = o.size()-1; i>=0; i--) {
       Obstacle obs = o.get(i);
       obs.display();
       obs.move();
-      Reward reward = ro.get(i);
+      if (dist(obs.loc.x, 0, m.loc.x, 0) <= 127.5 && dist(0, obs.loc.y, 0, m.loc.y) <= 162.5) {
+        h.health -= .5;
+      }
+    }
+    for (int j = ro.size()-1; j>=0; j--) {
+      Reward reward = ro.get(j);
       reward.display();
       reward.move();
+      if (dist(reward.loc.x, 0, m.loc.x, 0) <= 90 && dist(0, reward.loc.y, 0, m.loc.y) <=125) {
+        ro.remove(j);
+        score+=1;
+      }
     }
-    m.display();
-    m.move();
-    h.display();
+    if (h.health <= 0) {
+      game = false;
+      lose = true;
+    }
+    if (score >= 40) {
+      game = false;
+      win = true;
+    }
+    fill(240, 100, 100);
+    rectMode(CENTER);
+    rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
+    fill(360);
+    text("Pause", width-200, 60);
+  }
+  if (pause == true) {
+    if (kanye==true) {
+      background(kanyeBackground);
+    }
+    if (kim==true) {
+      background(kimBackground);
+    }
+    if (taylor==true) {
+      background(taylorBackground);
+    }
+    if (miley==true) {
+      background(mileyBackground);
+    }
+    fill(240, 80, 80, 75);
+    rect(width/2, height/2, width, height);
+    fill(0);
+    textSize(50);
+    text("GAME PAUSED", width/2, height/2);
+    rectMode(CENTER);
+    fill(0,0,100);
+    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+    fill(0);
+    textSize(30);
+    text("PLAY", width/2, height-90);
   }
   if (lose == true) {
-   background(loseScreen);
-   textAlign(CENTER);
-   textSize(40);
-   fill(0);
-   text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+    background(loseScreen);
+    textAlign(CENTER);
+    textSize(40);
+    fill(0);
+    text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
   }
-  
-  if(win == true){
+
+  if (win == true) {
     background(winScreen);
     textAlign(CENTER);
     textSize(40);
-    fill(0,0,100);
-    text("Congratulations! You have made it in Hollywood!",width/2,height-100);
+    fill(0, 0, 100);
+    text("Congratulations! You have made it in Hollywood!", width/2, height-100);
   }
 }
 
@@ -191,6 +248,14 @@ void mousePressed() {
   if (instructions==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
     instructions = false;
     start = true;
+  }
+  if (game == true && mouseX < pausebuttonx + pausebuttonw/2 && mouseX > pausebuttonx - pausebuttonw/2 && mouseY < pausebuttony + pausebuttonh/2 && mouseY > pausebuttony-pausebuttonh/2) {
+    game = false;
+    pause = true;
+  }
+  if (pause==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+    pause = false;
+    game = true;
   }
 }
 

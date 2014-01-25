@@ -12,14 +12,15 @@ class Mover {
   Mover() {
     x = 130;
     y = 200;
-    loc = new PVector(0, height-y);
-    up = new PVector(0, -200);
+    loc = new PVector(x/2, height-y/2);
+    up = new PVector(0, -250);
     left = new PVector(-5, 0);
     right = new PVector(5, 0);
     down = new PVector(0, 5);
   }
 
   void display() {
+    imageMode(CENTER);
     if (kanye == true) {
       image(Kanye, loc.x, loc.y, x, y);
     }
@@ -32,21 +33,22 @@ class Mover {
     if (miley == true) {
       image(Miley, loc.x, loc.y, x, y);
     }
+    imageMode(CORNER);
   }
   void move() {
-    if (keyPressed == true && key == 'a' && loc.x>0) {
+    if (keyPressed == true && key == 'a' && loc.x>0+x/2) {
       loc.add(left);
     }
-    if (keyPressed == true && key == 'd' && loc.x<width-x) {
+    if (keyPressed == true && key == 'd' && loc.x<width-x/2) {
       loc.add(right);
     }
-    if (keyPressed == true && key == 'w' && loc.y>=300) {
+    if (keyPressed == true && key == 'w' && loc.y>=400) {
       loc.add(up);
     }
-    if (keyPressed == true && key == 's' && loc.y<height-y) {
+    if (keyPressed == true && key == 's' && loc.y<height-y/2) {
       loc.add(down);
     }
-    if (loc.y+y<height) {
+    if (loc.y+y/2<height) {
       vel+=grav;
       loc.y+=vel; 
       vel*=-0.001*(height-y);

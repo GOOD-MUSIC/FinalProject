@@ -31,7 +31,6 @@ class Decision {
 
   void display() {
     rectMode(CORNER);
-<<<<<<< HEAD
     checkbackground();
     if (kanye==true) {
       if (decision1 == true) {
@@ -88,56 +87,11 @@ class Decision {
         rect1text = "Rock the new look";
         rect2text = "Redye them brown";
       }
-=======
-    if (kanye==true) {
-      background(kanyeBackground);
-      question = "Sway has just asked you why you don't \n empower yourself and do it yourself.  \n What do you say?";
-      rect1text = "YOU AIN'T GOT THE ANSWERS!";
-      rect2text = "Good idea dawg!";
-      //for the 2nd decision from Level 1 to Level 2
-      //question = "A paparazzo is interrogating you at \n the airport. How do you react?";
-      //rect1text = "Ignore him and keep walking";
-      //rect2text = "Beat him up!";
-    }
-    if (kim==true) {
-      background(kimBackground);
-      question = "Your baby is about to be born. \n What do you name it?";
-      rect1text = "North";
-      rect2text = "Shontelle";
-      //for the 2nd decision from Level 1 to Level 2
-      //question = "Your manager wants to cancel Keeping \n Up With The Kardashians. \n What do you say?";
-      //rect1text = "No! I love my show.";
-      //rect2text = "Go for it.";
-    }
-    if (taylor==true) {
-      background(taylorBackground);
-      question = "You just broke up with Harry Styles. \n What do you do?";
-      rect1text = "Write a song about it";
-      rect2text = "Move on";
-      //for the 2nd decision from Level 1 to Level 2
-      //question = "Fans are protesting agains your \n new pop image. \n How do you react?";
-      //rect1text = "Return to country music";
-      //rect2text = "Stay true to you";
-    }
-    if (miley==true) {
-      background(mileyBackground);
-      question = "Liam Hemsworth broke off your \n engagement. What do you do?";
-      rect1text = "Get a haircut";
-      rect2text = "Write a song about it";
-      //for the 2nd decision from Level 1 to Level 2
-      //question = "You bleached your eyebrows and \n no longer look human. \n What do you do?";
-      //rect1text = "Rock the new look";
-      //rect2text = "Redye them brown";
->>>>>>> a3d81602576ee1b5c2ab8407012f52a1fe0eee62
     }
     textAlign(CENTER);
     fill(360);
     if (taylor) {
-<<<<<<< HEAD
       fill(57, 100, 100);
-=======
-      fill(57, 10, 100);
->>>>>>> a3d81602576ee1b5c2ab8407012f52a1fe0eee62
     }
     if (miley) {
       fill(275, 100, 100);

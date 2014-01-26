@@ -3,12 +3,8 @@ ArrayList<Reward> ro = new ArrayList<Reward>();
 ArrayList<Obstacle> o = new ArrayList<Obstacle>();
 HealthBar h;
 Mover m;
-<<<<<<< HEAD
 Decision dlevel1;
 Decision dlevel2;
-=======
-Decision d;
->>>>>>> a3d81602576ee1b5c2ab8407012f52a1fe0eee62
 int oTime;
 int rTime;
 boolean start = true;
@@ -18,12 +14,8 @@ boolean lose = false;
 boolean win = false;
 boolean pause = false;
 boolean instructions = false;
-<<<<<<< HEAD
 boolean decision1 = false;
 boolean decision2 = false;
-=======
-boolean decision = false;
->>>>>>> a3d81602576ee1b5c2ab8407012f52a1fe0eee62
 boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
@@ -80,10 +72,7 @@ int scorex = 100;
 int scorey = 50;
 int kwSize = 50;
 PFont font;
-<<<<<<< HEAD
 
-=======
->>>>>>> a3d81602576ee1b5c2ab8407012f52a1fe0eee62
 void setup() {
   size(1000, 500);
   colorMode(HSB, 360, 100, 100, 100);
@@ -93,7 +82,6 @@ void setup() {
   ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
-<<<<<<< HEAD
   kanyeBackground1 = loadImage("StageBackground.jpg");
   kimBackground1 = loadImage("JennerBackground.jpg");
   taylorBackground1 = loadImage("NashvilleBackground.jpg");
@@ -108,18 +96,8 @@ void setup() {
   taylorBackground3 = loadImage("winTemp.jpg");
   mileyBackground3 = loadImage("winTemp.jpg");
   //TEMPORARY
-<<<<<<< HEAD
   dlevel1 = new Decision();
   dlevel2 = new Decision();
-=======
-=======
-  d = new Decision();
-  kanyeBackground = loadImage("StageBackground.jpg");
-  kimBackground = loadImage("JennerBackground.jpg");
-  taylorBackground = loadImage("NashvilleBackground.jpg");
-  mileyBackground = loadImage("CyrusBackground.jpg");
->>>>>>> origin/Diya/Game-Tester-Work
->>>>>>> a3d81602576ee1b5c2ab8407012f52a1fe0eee62
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -303,7 +281,6 @@ void draw() {
 }
 
 void mousePressed() {
-<<<<<<< HEAD
   if (decision1 == true && mouseX >= dlevel1.rect1x && mouseX<= dlevel1.rect1x+dlevel1.rect1w && mouseY >= dlevel1.rect1y && mouseY <= dlevel1.rect1y+dlevel1.recth) {
     decision1 = false;
     game = true;
@@ -328,18 +305,6 @@ void mousePressed() {
     level3 = true;
     h.health-=200;
   }
-=======
-  //if (decision==true && mouseX >= d.rect1x && mouseX<= d.rect1x+d.rect1w && mouseY >= d.rect1y && mouseY <= d.rect1y+d.recth) {
-  //decision = false;
-  // game = true;
-  //    score+= 1;
-  //  }
-  //  if (decision==true && mouseX >= d.rect2x && mouseX<= d.rect2x+d.rect2w && mouseY >= d.rect2y && mouseY <= d.rect2y+d.recth) {
-  //   decision = false;
-  //  game = true;
-  //  h.health-=1;
-  // }
->>>>>>> a3d81602576ee1b5c2ab8407012f52a1fe0eee62
   if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kanye = true;

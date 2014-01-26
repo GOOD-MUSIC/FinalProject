@@ -91,6 +91,28 @@ void setup() {
 
 void draw() {
   if (start == true) {
+     start = true;
+    game = false;
+    stop = false;
+    lose = false;
+    win = false;
+    pause = false;
+    instructions = false;
+    kanye = false;
+    kim = false;
+    taylor = false;
+    miley = false;
+    score = 0;
+    h.health = 1000;
+    for (int j = ro.size()-1; j>=0; j--) {
+      ro.remove(j);
+    }
+    for (int j = o.size()-1; j>=0; j--) {
+      o.remove(j);
+    }
+    for (int j = r.size()-1; j>=0; j--) {
+      r.remove(j);
+    }
     background(StartScreen);
     fill(0);
     rect(instructionsx, instructionsy, instructionsw, instructionsh);
@@ -108,6 +130,7 @@ void draw() {
     image(kimHead, kimx, heady);
     image(taylorHead, taylorx, heady);
     image(mileyHead, mileyx, heady);
+    restart = false;
   }
 
   if (instructions == true) {
@@ -121,7 +144,6 @@ void draw() {
     text("PLAY", width/2, height-95);
   }
   if (game == true) {
-    restart = false;
     if (kanye==true) {
       background(kanyeBackground);
     }
@@ -188,11 +210,6 @@ void draw() {
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
     text("PAUSE", width-200, 60);
-    fill(240, 100, 100);
-    rectMode(CENTER);
-    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
-    fill(360);
-    text("RESTART", width-75, 60);
   }
   if (pause == true) {
     if (kanye==true) {
@@ -218,11 +235,36 @@ void draw() {
     textSize(30);
     textAlign(CENTER);
     text("PLAY", width/2, height-90);
+    textSize(20);
+    fill(240, 100, 100);
+    rectMode(CENTER);
+    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+    fill(360);
+    text("RESTART", width-75, 60);
   }
   if (restart == true) {
     start = true;
+    game = false;
+    stop = false;
+    lose = false;
+    win = false;
+    pause = false;
+    instructions = false;
+    kanye = false;
+    kim = false;
+    taylor = false;
+    miley = false;
     score = 0;
-    h.health = 100;
+    h.health = 1000;
+    for (int j = ro.size()-1; j>=0; j--) {
+      ro.remove(j);
+    }
+    for (int j = o.size()-1; j>=0; j--) {
+      o.remove(j);
+    }
+    for (int j = r.size()-1; j>=0; j--) {
+      r.remove(j);
+    }
   }
   if (lose == true) {
     background(loseScreen);
@@ -230,10 +272,10 @@ void draw() {
     textSize(40);
     fill(0);
     text("You lost. I guess Hollywood's not for everyone.", width/2, height-150);
-    fill(240, 99, 1);
+    fill(240, 100, 100);
     rectMode(CENTER);
     rect(endrestartbuttonx, endrestartbuttony, endrestartbuttonw, endrestartbuttonh);
-    fill(240, 0, 99);
+    fill(240, 100, 99);
     textSize(30);
     text("RESTART", width-90, 60);
   }
@@ -242,12 +284,12 @@ void draw() {
     background(winScreen);
     textAlign(CENTER);
     textSize(40);
-    fill(0);
+    fill(150, 100, 100);
     text("Congratulations! You have made it in Hollywood!", width/2, height-150);
     fill(0);
     rectMode(CENTER);
     rect(endrestartbuttonx, endrestartbuttony, endrestartbuttonw, endrestartbuttonh);
-    fill(255, 0, 0);
+    fill(255, 100, 100);
     textSize(30);
     text("RESTART", width-90, 60);
   }
@@ -290,19 +332,21 @@ void mousePressed() {
     pause = false;
     game = true;
   }
-  if (restart==false && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
-    restart = !restart;
+  if (restart==false && pause==true && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
+    restart = true;
     game = false;
+    pause = false;
+  }
+  if (lose==true && mouseX<endrestartbuttonx + endrestartbuttonw/2 && mouseX>endrestartbuttonx - endrestartbuttonw/2 && mouseY<endrestartbuttony + endrestartbuttonh/2 && mouseY>endrestartbuttony - endrestartbuttonh/2) {
+    restart = true;
+    game = false;
+    lose = false;
     start = true;
   }
-  if (restart==false && lose==true && mouseX<endrestartbuttonx+endrestartbuttonw/2 && mouseX>endrestartbuttonx-endrestartbuttonw/2 && mouseY<endrestartbuttony+endrestartbuttonh/2 && mouseY>endrestartbuttony-endrestartbuttonh/2) {
-    restart = !restart;
+  if (win==true && mouseX<endrestartbuttonx + endrestartbuttonw/2 && mouseX>endrestartbuttonx - endrestartbuttonw/2 && mouseY<endrestartbuttony + endrestartbuttonh/2 && mouseY>endrestartbuttony - endrestartbuttonh/2) {
+    restart = true;
     game = false;
-    start = true;
-  }
-  if (restart==false && win==true && mouseX<endrestartbuttonx+endrestartbuttonw/2 && mouseX>endrestartbuttonx-endrestartbuttonw/2 && mouseY<endrestartbuttony+endrestartbuttonh/2 && mouseY>endrestartbuttony-endrestartbuttonh/2) {
-    restart = !restart;
-    game = false;
+    win = false;
     start = true;
   }
 }

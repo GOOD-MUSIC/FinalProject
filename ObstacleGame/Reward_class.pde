@@ -23,12 +23,12 @@ class Reward {
     vel3 = new PVector(-5, 0);
     kanyeReward1 = loadImage("YeezusAlbumBonus.jpg");
     kimReward1 = loadImage("NorthWestBonus.png");
-    taylorReward1 = loadImage("GuitarBonus.png");
+    taylorReward1 = loadImage("mileyReward1.png");
     mileyReward1 = loadImage("mileyReward1.png");
     //TEMPORARY -- WAITING FOR MARISA
     kanyeReward2 = loadImage("YeezusAlbumBonus.jpg");
     kimReward2 = loadImage("NorthWestBonus.png");
-    taylorReward2 = loadImage("GuitarBonus.png");
+    taylorReward2 = loadImage("mileyReward1.png");
     mileyReward2 = loadImage("mileyReward2.png");
     kanyeReward3 = loadImage("YeezusAlbumBonus.jpg");
     kimReward3 = loadImage("NorthWestBonus.png");

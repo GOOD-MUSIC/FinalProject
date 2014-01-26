@@ -13,6 +13,7 @@ boolean stop = false;
 boolean lose = false;
 boolean win = false;
 boolean pause = false;
+boolean restart = false;
 boolean instructions = false;
 boolean decision1 = false;
 boolean decision2 = false;
@@ -23,8 +24,8 @@ boolean miley = false;
 boolean level1 = false;
 boolean level2 = false;
 boolean level3 = false;
-boolean levelWin1 = false;
-boolean levelWin2 = false;
+//boolean levelWin1 = false;
+//boolean levelWin2 = false;
 PImage kanyeBackground1;
 PImage kimBackground1;
 PImage taylorBackground1;
@@ -67,6 +68,10 @@ int pausebuttonx = 800;
 int pausebuttony = 50;
 int pausebuttonw = 100;
 int pausebuttonh = 50;
+int restartbuttonx;
+int restartbuttony;
+int restartbuttonw;
+int restartbuttonh;
 int score = 0;
 int scorex = 100;
 int scorey = 50;
@@ -109,6 +114,10 @@ void setup() {
   mileyHead = loadImage("miley headshot.jpg");
   winScreen = loadImage("winTemp.jpg");
   loseScreen = loadImage("loseTemp.png");
+  restartbuttonx = width/2;
+  restartbuttony = 110;
+  restartbuttonw = 100;
+  restartbuttonh = 50;
   font = loadFont("FinalProjectFont2014.vlw");
 }
 
@@ -128,10 +137,12 @@ void draw() {
     String p = "Choose a Player:";
     text(p, 50, heady+25, 100, 100);
     rectMode(CORNER);
+    imageMode(CORNER);
     image(kanyeHead, kanyex, heady);
     image(kimHead, kimx, heady);
     image(taylorHead, taylorx, heady);
     image(mileyHead, mileyx, heady);
+    restart();
   }
 
   if (instructions == true) {
@@ -191,7 +202,7 @@ void draw() {
       game = false;
       lose = true;
     }
-    if (score >= 40) {
+    if (score >= 70) {
       game = false;
       win = true;
     }
@@ -200,19 +211,40 @@ void draw() {
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
     text("Pause", width-200, 60);
-    if ( score>= 2) {
+    if ( score == 10) {
       game = false;
-      decision = true;
+      decision1 = true;
     }
-  }
-  if (decision == true) {
-    d.display();
+    if (score == 30) {
+      game = false;
+      decision2 = true;
+    }
   }
   if (decision1 == true) {
     dlevel1.display();
+    for (int j = ro.size()-1; j>=0; j--) {
+      ro.remove(j);
+    }
+    for (int j = o.size()-1; j>=0; j--) {
+      o.remove(j);
+    }
+    for (int j = r.size()-1; j>=0; j--) {
+      r.remove(j);
+    }
+    m.loc.set(m.x/2, height-m.y/2);
   }
   if (decision2 == true) {
     dlevel2.display();
+    for (int j = ro.size()-1; j>=0; j--) {
+      ro.remove(j);
+    }
+    for (int j = o.size()-1; j>=0; j--) {
+      o.remove(j);
+    }
+    for (int j = r.size()-1; j>=0; j--) {
+      r.remove(j);
+    }
+    m.loc.set(m.x/2, height-m.y/2);
   }
   if (pause == true) {
     checkbackground();
@@ -227,49 +259,30 @@ void draw() {
     fill(0);
     textSize(30);
     text("PLAY", width/2, height-90);
-  }
-  if (score==10) {
-    level1 = false;
-    levelWin1 = true;
-    game = false;
-  }
-  if (levelWin1 == true) {
-    game = false;
-    background(360, 100, 100);
-    fill(0);
-    textSize(50);
-    text("you won level 1", width/2, height/2);
-    rectMode(CENTER);
+    textSize(20);
     fill(0, 0, 100);
-    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
-    fill(0);
-    textSize(30);
-    text("continue", width/2, height-90);
-  }
-  if (score == 20) {
-    level2 = false;
-    levelWin2 = true;
-    game = false;
-  }
-  if (levelWin2 == true) {
-    game = false;
-    background(360, 100, 100);
-    fill(0);
-    textSize(50);
-    text("you won level 2", width/2, height/2);
     rectMode(CENTER);
-    fill(0, 0, 100);
-    rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
     fill(0);
-    textSize(30);
-    text("continue", width/2, height-90);
+    text("RESTART", restartbuttonx, restartbuttony+5);
   }
+
+  if (restart == true) {
+    restart();
+  }
+
   if (lose == true) {
     background(loseScreen);
     textAlign(CENTER);
     textSize(40);
     fill(0);
     text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+    fill(0, 0, 100);
+    rectMode(CENTER);
+    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+    fill(0);
+    textSize(25);
+    text("RESTART", restartbuttonx, restartbuttony+5);
   }
   if (win == true) {
     background(winScreen);
@@ -277,6 +290,12 @@ void draw() {
     textSize(40);
     fill(0, 0, 100);
     text("Congratulations! You have made it in Hollywood!", width/2, height-100);
+    fill(0, 0, 100);
+    rectMode(CENTER);
+    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+    fill(0);
+    textSize(25);
+    text("RESTART", restartbuttonx, restartbuttony+5);
   }
 }
 
@@ -285,7 +304,7 @@ void mousePressed() {
     decision1 = false;
     game = true;
     level2 = true;
-    score+= 10;
+    score+= 1;
   }
   if (decision1 == true && mouseX >= dlevel1.rect2x && mouseX<= dlevel1.rect2x+dlevel1.rect2w && mouseY >= dlevel1.rect2y && mouseY <= dlevel1.rect2y+dlevel1.recth) {
     decision1 = false;
@@ -310,24 +329,28 @@ void mousePressed() {
     kanye = true;
     start = false;
     level1 = true;
+    restart = false;
   }
   if (start==true && mouseX<kimx+headw && mouseX>kimx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kim = true;
     start = false;
     level1 = true;
+    restart = false;
   }
   if (start==true && mouseX<taylorx+headw && mouseX>taylorx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     taylor = true;
     start = false;
     level1 = true;
+    restart = false;
   }
   if (start==true && mouseX<mileyx+headw && mouseX>mileyx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     miley = true;
     start = false;
     level1 = true;
+    restart = false;
   }
   if (start==true && mouseX<instructionsx+instructionsw && mouseX>instructionsx && mouseY<instructionsy+instructionsh && mouseY>instructionsy) {
     instructions = true;
@@ -345,15 +368,65 @@ void mousePressed() {
     pause = false;
     game = true;
   }
-  if (levelWin1==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
-    levelWin1 = false;
-    decision1 = true;
+  //  if (levelWin1==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+  //    levelWin1 = false;
+  //    decision1 = true;
+  //  }
+  //  if (levelWin2==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+  //    levelWin2 = false;
+  //    decision2 = true;
+  //  }
+  if (pause==true && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
+    restart = true;
+    game = false;
+    pause = false;
+    start = true;
   }
-  if (levelWin2==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
-    levelWin2 = false;
-    decision2 = true;
+  if (lose==true && mouseX<restartbuttonx + restartbuttonw/2 && mouseX>restartbuttonx - restartbuttonw/2 && mouseY<restartbuttony + restartbuttonh/2 && mouseY>restartbuttony - restartbuttonh/2) {
+    restart = true;
+    game = false;
+    lose = false;
+    start = true;
+  }
+  if (win==true && mouseX<restartbuttonx + restartbuttonw/2 && mouseX>restartbuttonx - restartbuttonw/2 && mouseY<restartbuttony + restartbuttonh/2 && mouseY>restartbuttony - restartbuttonh/2) {
+    restart = true;
+    game = false;
+    win = false;
+    start = true;
   }
 }
+
+void restart() {
+  start = true;
+  game = false;
+  stop = false;
+  lose = false;
+  win = false;
+  restart = false;
+  pause = false;
+  instructions = false;
+  decision1 = false;
+  decision2 = false;
+  kanye = false;
+  kim = false;
+  taylor = false;
+  miley = false;
+  level1 = true;
+  level2 = false;
+  level3 = false;
+  score = 0;
+  h.health = 1000;
+  for (int j = ro.size()-1; j>=0; j--) {
+    ro.remove(j);
+  }
+  for (int j = o.size()-1; j>=0; j--) {
+    o.remove(j);
+  }
+  for (int j = r.size()-1; j>=0; j--) {
+    r.remove(j);
+  }
+  m.loc.set(m.x/2, height-m.y/2);
+} 
 
 void checkbackground() {
   if (kanye == true) {

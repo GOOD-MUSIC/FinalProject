@@ -19,21 +19,21 @@ class Obstacle {
   Obstacle() {
     loc = new PVector(width, height-62.5);
     vel1 = new PVector(-2, 0);
-    vel2 = new PVector(-3, 0);
-    vel3 = new PVector(-5, 0);
-    kanyeObstacle1 = loadImage("SwayObstacle.png");
+    vel2 = new PVector(-2.5, 0);
+    vel3 = new PVector(-3, 0);
+    kanyeObstacle1 = loadImage("kanyeObstacle2.png");
     kimObstacle1 = loadImage("Kimobstacle.png");
-    taylorObstacle1 = loadImage("taylorObstacle2.png");
-    mileyObstacle1 = loadImage("mileyObstacle1.png");
+    taylorObstacle1 = loadImage("taylorObstacle3.png");
+    mileyObstacle1 = loadImage("mileyObstacle1.jpg");
     // TEMPORARY -- WAITING FOR MARISA
     kanyeObstacle2 = loadImage("kanyeObstacle2.png");
     kimObstacle2 = loadImage("Kimobstacle.png");
-    taylorObstacle2 = loadImage("taylorObstacle2.png");
-    mileyObstacle2 = loadImage("mileyObstacle2.png");
+    taylorObstacle2 = loadImage("taylorObstacle3.png");
+    mileyObstacle2 = loadImage("mileyObstacle1.jpg");
     kanyeObstacle3 = loadImage("kanyeObstacle2.png");
     kimObstacle3 = loadImage("Kimobstacle.png");
     taylorObstacle3 = loadImage("taylorObstacle3.png");
-    mileyObstacle3 = loadImage("mileyObstacle3.png");
+    mileyObstacle3 = loadImage("mileyObstacle1.jpg");
   }
 
   void display() {

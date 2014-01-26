@@ -19,8 +19,8 @@ class Reward {
   Reward(float x, float y) {
     loc = new PVector(x, y);
     vel1 = new PVector(-2, 0);
-    vel2 = new PVector(-3, 0);
-    vel3 = new PVector(-5, 0);
+    vel2 = new PVector(-2.5, 0);
+    vel3 = new PVector(-3, 0);
     kanyeReward1 = loadImage("YeezusAlbumBonus.jpg");
     kimReward1 = loadImage("NorthWestBonus.png");
     taylorReward1 = loadImage("mileyReward1.png");
@@ -33,7 +33,7 @@ class Reward {
     kanyeReward3 = loadImage("YeezusAlbumBonus.jpg");
     kimReward3 = loadImage("NorthWestBonus.png");
     taylorReward3 = loadImage("mileyReward1.png");
-    mileyReward3 = loadImage("mileyReward3.png");
+    mileyReward3 = loadImage("mileyReward3.jpg");
   }
 
   void display() {

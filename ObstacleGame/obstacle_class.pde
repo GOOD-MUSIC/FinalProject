@@ -48,41 +48,41 @@ class Obstacle {
       if (level3 == true) {
         image(kanyeObstacle3, loc.x, loc.y);
       }
-      if (kim == true) {
-        if (level1 == true) {
-          image(kimObstacle1, loc.x, loc.y);
-        }
-        if (level2 == true) {
-          image(kimObstacle2, loc.x, loc.y);
-        }
-        if (level3 == true) {
-          image(kimObstacle3, loc.x, loc.y);
-        }
-      }
-      if (taylor == true) {
-        if (level1 == true) {
-          image(taylorObstacle1, loc.x, loc.y);
-        }
-        if (level2 == true) {
-          image(taylorObstacle2, loc.x, loc.y);
-        }
-        if (level3 == true) {
-          image(taylorObstacle3, loc.x, loc.y);
-        }
-      }
-      if (miley == true) {
-        if (level1 == true) {
-          image(mileyObstacle1, loc.x, loc.y);
-        }
-        if (level2 == true) {
-          image(mileyObstacle2, loc.x, loc.y);
-        }
-        if (level3 == true) {
-          image(mileyObstacle3, loc.x, loc.y);
-        }
-      }
-      imageMode(CORNER);
     }
+    if (kim == true) {
+      if (level1 == true) {
+        image(kimObstacle1, loc.x, loc.y);
+      }
+      if (level2 == true) {
+        image(kimObstacle2, loc.x, loc.y);
+      }
+      if (level3 == true) {
+        image(kimObstacle3, loc.x, loc.y);
+      }
+    }
+    if (taylor == true) {
+      if (level1 == true) {
+        image(taylorObstacle1, loc.x, loc.y);
+      }
+      if (level2 == true) {
+        image(taylorObstacle2, loc.x, loc.y);
+      }
+      if (level3 == true) {
+        image(taylorObstacle3, loc.x, loc.y);
+      }
+    }
+    if (miley == true) {
+      if (level1 == true) {
+        image(mileyObstacle1, loc.x, loc.y);
+      }
+      if (level2 == true) {
+        image(mileyObstacle2, loc.x, loc.y);
+      }
+      if (level3 == true) {
+        image(mileyObstacle3, loc.x, loc.y);
+      }
+    }
+    imageMode(CORNER);
   }
   void move() {
     if (level1 == true) {

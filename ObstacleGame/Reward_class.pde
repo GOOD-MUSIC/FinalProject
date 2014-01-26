@@ -48,38 +48,38 @@ class Reward {
       if (level3 == true) {
         image(kanyeReward3, loc.x, loc.y);
       }
-      if (kim == true) {
-        if (level1 == true) {
-          image(kimReward1, loc.x, loc.y);
-        }
-        if (level2 == true) {
-          image(kimReward2, loc.x, loc.y);
-        }
-        if (level3 == true) {
-          image(kimReward3, loc.x, loc.y);
-        }
+    }
+    if (kim == true) {
+      if (level1 == true) {
+        image(kimReward1, loc.x, loc.y);
       }
-      if (taylor == true) {
-        if (level1 == true) {
-          image(taylorReward1, loc.x, loc.y);
-        }
-        if (level2 == true) {
-          image(taylorReward2, loc.x, loc.y);
-        }
-        if (level3 == true) {
-          image(taylorReward3, loc.x, loc.y);
-        }
+      if (level2 == true) {
+        image(kimReward2, loc.x, loc.y);
       }
-      if (miley == true) {
-        if (level1 == true) {
-          image(mileyReward1, loc.x, loc.y);
-        }
-        if (level2 == true) {
-          image(mileyReward2, loc.x, loc.y);
-        }
-        if (level3 == true) {
-          image(mileyReward3, loc.x, loc.y);
-        }
+      if (level3 == true) {
+        image(kimReward3, loc.x, loc.y);
+      }
+    }
+    if (taylor == true) {
+      if (level1 == true) {
+        image(taylorReward1, loc.x, loc.y);
+      }
+      if (level2 == true) {
+        image(taylorReward2, loc.x, loc.y);
+      }
+      if (level3 == true) {
+        image(taylorReward3, loc.x, loc.y);
+      }
+    }
+    if (miley == true) {
+      if (level1 == true) {
+        image(mileyReward1, loc.x, loc.y);
+      }
+      if (level2 == true) {
+        image(mileyReward2, loc.x, loc.y);
+      }
+      if (level3 == true) {
+        image(mileyReward3, loc.x, loc.y);
       }
     }
   }

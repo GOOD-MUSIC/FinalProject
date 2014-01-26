@@ -3,6 +3,8 @@ ArrayList<Reward> ro = new ArrayList<Reward>();
 ArrayList<Obstacle> o = new ArrayList<Obstacle>();
 HealthBar h;
 Mover m;
+Decision dlevel1;
+Decision dlevel2;
 int oTime;
 int rTime;
 boolean start = true;
@@ -12,6 +14,8 @@ boolean lose = false;
 boolean win = false;
 boolean pause = false;
 boolean instructions = false;
+boolean decision1 = false;
+boolean decision2 = false;
 boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
@@ -66,6 +70,8 @@ int pausebuttonh = 50;
 int score = 0;
 int scorex = 100;
 int scorey = 50;
+int kwSize = 50;
+PFont font;
 
 void setup() {
   size(1000, 500);
@@ -90,6 +96,8 @@ void setup() {
   taylorBackground3 = loadImage("winTemp.jpg");
   mileyBackground3 = loadImage("winTemp.jpg");
   //TEMPORARY
+  dlevel1 = new Decision();
+  dlevel2 = new Decision();
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -101,9 +109,11 @@ void setup() {
   mileyHead = loadImage("miley headshot.jpg");
   winScreen = loadImage("winTemp.jpg");
   loseScreen = loadImage("loseTemp.png");
+  font = loadFont("FinalProjectFont2014.vlw");
 }
 
 void draw() {
+  textFont(font);
   if (start == true) {
     background(StartScreen);
     fill(0);
@@ -128,57 +138,15 @@ void draw() {
     background(0);
     fill(0, 0, 100);
     textAlign(CENTER);
-    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Jump and move to collect bonuses and avoid obstacles. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n a-move left; s-move down; d-move right; w-jump up \n Increase your score to 40 before the health bar reaches 0 to win the game! \n HAVE FUN.", width/2, 220);
+    textSize(25);
+    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Jump and move to collect bonuses and avoid obstacles. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n a-move left; s-move down; d-move right; w-jump up \n Increase your score to 40 before the health bar reaches 0 to win the game! \n HAVE FUN.", width/2, 50);
     rectMode(CENTER);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
     text("PLAY", width/2, height-100);
   }
   if (game == true) {
-    if (kanye == true) {
-      if (level1 == true) {
-        background(kanyeBackground1);
-      }
-      if (level2 == true) {
-        background(kanyeBackground2);
-      }
-      if (level3 == true) {
-        background(kanyeBackground3);
-      }
-    }
-    if (kim == true) {
-      if (level1 == true) {
-        background(kimBackground1);
-      }
-      if (level2 == true) {
-        background(kimBackground2);
-      }
-      if (level3 == true) {
-        background(kimBackground3);
-      }
-    }
-    if (taylor == true) {
-      if (level1 == true) {
-        background(taylorBackground1);
-      }
-      if (level2 == true) {
-        background(taylorBackground2);
-      }
-      if (level3 == true) {
-        background(taylorBackground3);
-      }
-    }
-    if (miley == true) {
-      if (level1 == true) {
-        background(mileyBackground1);
-      }
-      if (level2 == true) {
-        background(mileyBackground2);
-      }
-      if (level3 == true) {
-        background(mileyBackground3);
-      }
-    }
+    checkbackground();
     fill(0, 0, 190);
     text("Score: " + score, scorex, scorey);
     if (millis() - rTime >= 3000) {
@@ -233,51 +201,14 @@ void draw() {
     fill(360);
     text("Pause", width-200, 60);
   }
+  if (decision1 == true) {
+    dlevel1.display();
+  }
+  if (decision2 == true) {
+    dlevel2.display();
+  }
   if (pause == true) {
-    if (kanye == true) {
-      if (level1 == true) {
-        background(kanyeBackground1);
-      }
-      if (level2 == true) {
-        background(kanyeBackground2);
-      }
-      if (level3 == true) {
-        background(kanyeBackground3);
-      }
-    }
-    if (kim == true) {
-      if (level1 == true) {
-        background(kimBackground1);
-      }
-      if (level2 == true) {
-        background(kimBackground2);
-      }
-      if (level3 == true) {
-        background(kimBackground3);
-      }
-    }
-    if (taylor == true) {
-      if (level1 == true) {
-        background(taylorBackground1);
-      }
-      if (level2 == true) {
-        background(taylorBackground2);
-      }
-      if (level3 == true) {
-        background(taylorBackground3);
-      }
-    }
-    if (miley == true) {
-      if (level1 == true) {
-        background(mileyBackground1);
-      }
-      if (level2 == true) {
-        background(mileyBackground2);
-      }
-      if (level3 == true) {
-        background(mileyBackground3);
-      }
-    }
+    checkbackground();
     fill(240, 80, 80, 75);
     rect(width/2, height/2, width, height);
     fill(0);
@@ -293,8 +224,10 @@ void draw() {
   if (score==10) {
     level1 = false;
     levelWin1 = true;
+    game = false;
   }
   if (levelWin1 == true) {
+    game = false;
     background(360, 100, 100);
     fill(0);
     textSize(50);
@@ -309,8 +242,10 @@ void draw() {
   if (score == 20) {
     level2 = false;
     levelWin2 = true;
+    game = false;
   }
   if (levelWin2 == true) {
+    game = false;
     background(360, 100, 100);
     fill(0);
     textSize(50);
@@ -339,6 +274,30 @@ void draw() {
 }
 
 void mousePressed() {
+  if (decision1 == true && mouseX >= dlevel1.rect1x && mouseX<= dlevel1.rect1x+dlevel1.rect1w && mouseY >= dlevel1.rect1y && mouseY <= dlevel1.rect1y+dlevel1.recth) {
+    decision1 = false;
+    game = true;
+    level2 = true;
+    score+= 10;
+  }
+  if (decision1 == true && mouseX >= dlevel1.rect2x && mouseX<= dlevel1.rect2x+dlevel1.rect2w && mouseY >= dlevel1.rect2y && mouseY <= dlevel1.rect2y+dlevel1.recth) {
+    decision1 = false;
+    game = true;
+    level2 = true;
+    h.health-=100;
+  }
+  if (decision2 == true && mouseX >= dlevel2.rect1x && mouseX<= dlevel2.rect1x+dlevel2.rect1w && mouseY >= dlevel2.rect1y && mouseY <= dlevel2.rect1y+dlevel2.recth) {
+    decision2 = false;
+    game = true;
+    level3 = true;
+    score+= 20;
+  }
+  if (decision2 == true && mouseX >= dlevel2.rect2x && mouseX<= dlevel2.rect2x+dlevel2.rect2w && mouseY >= dlevel2.rect2y && mouseY <= dlevel2.rect2y+dlevel2.recth) {
+    decision2 = false;
+    game = true;
+    level3 = true;
+    h.health-=200;
+  }
   if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kanye = true;
@@ -349,16 +308,19 @@ void mousePressed() {
     game = true;
     kim = true;
     start = false;
+    level1 = true;
   }
   if (start==true && mouseX<taylorx+headw && mouseX>taylorx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     taylor = true;
     start = false;
+    level1 = true;
   }
   if (start==true && mouseX<mileyx+headw && mouseX>mileyx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     miley = true;
     start = false;
+    level1 = true;
   }
   if (start==true && mouseX<instructionsx+instructionsw && mouseX>instructionsx && mouseY<instructionsy+instructionsh && mouseY>instructionsy) {
     instructions = true;
@@ -377,12 +339,59 @@ void mousePressed() {
     game = true;
   }
   if (levelWin1==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
-    level2 = true;
     levelWin1 = false;
+    decision1 = true;
   }
   if (levelWin2==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
-    level3 = true;
     levelWin2 = false;
+    decision2 = true;
+  }
+}
+
+void checkbackground() {
+  if (kanye == true) {
+    if (level1 == true) {
+      background(kanyeBackground1);
+    }
+    if (level2 == true) {
+      background(kanyeBackground2);
+    }
+    if (level3 == true) {
+      background(kanyeBackground3);
+    }
+  }
+  if (kim == true) {
+    if (level1 == true) {
+      background(kimBackground1);
+    }
+    if (level2 == true) {
+      background(kimBackground2);
+    }
+    if (level3 == true) {
+      background(kimBackground3);
+    }
+  }
+  if (taylor == true) {
+    if (level1 == true) {
+      background(taylorBackground1);
+    }
+    if (level2 == true) {
+      background(taylorBackground2);
+    }
+    if (level3 == true) {
+      background(taylorBackground3);
+    }
+  }
+  if (miley == true) {
+    if (level1 == true) {
+      background(mileyBackground1);
+    }
+    if (level2 == true) {
+      background(mileyBackground2);
+    }
+    if (level3 == true) {
+      background(mileyBackground3);
+    }
   }
 }
 

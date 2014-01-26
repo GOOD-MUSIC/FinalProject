@@ -23,5 +23,5 @@ class HealthBar {
       rect(healthX-60, healthY + 5, health*.12, 10);
     }
   }
-  }
+}
 

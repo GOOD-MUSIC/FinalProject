@@ -3,6 +3,7 @@ ArrayList<Reward> ro = new ArrayList<Reward>();
 ArrayList<Obstacle> o = new ArrayList<Obstacle>();
 HealthBar h;
 Mover m;
+Decision d;
 int oTime;
 int rTime;
 boolean start = true;
@@ -12,6 +13,7 @@ boolean lose = false;
 boolean win = false;
 boolean pause = false;
 boolean instructions = false;
+boolean decision = false;
 boolean kanye = false;
 boolean kim = false;
 boolean taylor = false;
@@ -66,7 +68,8 @@ int pausebuttonh = 50;
 int score = 0;
 int scorex = 100;
 int scorey = 50;
-
+int kwSize = 50;
+PFont font;
 void setup() {
   size(1000, 500);
   colorMode(HSB, 360, 100, 100, 100);
@@ -76,6 +79,7 @@ void setup() {
   ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
+<<<<<<< HEAD
   kanyeBackground1 = loadImage("StageBackground.jpg");
   kimBackground1 = loadImage("JennerBackground.jpg");
   taylorBackground1 = loadImage("NashvilleBackground.jpg");
@@ -90,6 +94,13 @@ void setup() {
   taylorBackground3 = loadImage("winTemp.jpg");
   mileyBackground3 = loadImage("winTemp.jpg");
   //TEMPORARY
+=======
+  d = new Decision();
+  kanyeBackground = loadImage("StageBackground.jpg");
+  kimBackground = loadImage("JennerBackground.jpg");
+  taylorBackground = loadImage("NashvilleBackground.jpg");
+  mileyBackground = loadImage("CyrusBackground.jpg");
+>>>>>>> origin/Diya/Game-Tester-Work
   Kanye = loadImage("YeezyCharacter.png");
   Kim = loadImage("KimKardashian.png");
   Taylor = loadImage("SwiftCharacter.png");
@@ -101,9 +112,11 @@ void setup() {
   mileyHead = loadImage("miley headshot.jpg");
   winScreen = loadImage("winTemp.jpg");
   loseScreen = loadImage("loseTemp.png");
+  font = loadFont("FinalProjectFont2014.vlw");
 }
 
 void draw() {
+  textFont(font);
   if (start == true) {
     background(StartScreen);
     fill(0);
@@ -128,7 +141,8 @@ void draw() {
     background(0);
     fill(0, 0, 100);
     textAlign(CENTER);
-    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Jump and move to collect bonuses and avoid obstacles. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n a-move left; s-move down; d-move right; w-jump up \n Increase your score to 40 before the health bar reaches 0 to win the game! \n HAVE FUN.", width/2, 220);
+    textSize(25);
+    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Jump and move to collect bonuses and avoid obstacles. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n a-move left; s-move down; d-move right; w-jump up \n Increase your score to 40 before the health bar reaches 0 to win the game! \n HAVE FUN.", width/2, 50);
     rectMode(CENTER);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
@@ -232,6 +246,13 @@ void draw() {
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
     text("Pause", width-200, 60);
+    if ( score>= 2) {
+      game = false;
+      decision = true;
+    }
+  }
+  if (decision == true) {
+    d.display();
   }
   if (pause == true) {
     if (kanye == true) {
@@ -339,6 +360,16 @@ void draw() {
 }
 
 void mousePressed() {
+  //if (decision==true && mouseX >= d.rect1x && mouseX<= d.rect1x+d.rect1w && mouseY >= d.rect1y && mouseY <= d.rect1y+d.recth) {
+  //decision = false;
+  // game = true;
+  //    score+= 1;
+  //  }
+  //  if (decision==true && mouseX >= d.rect2x && mouseX<= d.rect2x+d.rect2w && mouseY >= d.rect2y && mouseY <= d.rect2y+d.recth) {
+  //   decision = false;
+  //  game = true;
+  //  h.health-=1;
+  // }
   if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kanye = true;

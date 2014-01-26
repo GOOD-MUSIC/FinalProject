@@ -91,28 +91,7 @@ void setup() {
 
 void draw() {
   if (start == true) {
-     start = true;
-    game = false;
-    stop = false;
-    lose = false;
-    win = false;
-    pause = false;
-    instructions = false;
-    kanye = false;
-    kim = false;
-    taylor = false;
-    miley = false;
-    score = 0;
-    h.health = 1000;
-    for (int j = ro.size()-1; j>=0; j--) {
-      ro.remove(j);
-    }
-    for (int j = o.size()-1; j>=0; j--) {
-      o.remove(j);
-    }
-    for (int j = r.size()-1; j>=0; j--) {
-      r.remove(j);
-    }
+    restart();
     background(StartScreen);
     fill(0);
     rect(instructionsx, instructionsy, instructionsw, instructionsh);
@@ -243,28 +222,7 @@ void draw() {
     text("RESTART", width-75, 60);
   }
   if (restart == true) {
-    start = true;
-    game = false;
-    stop = false;
-    lose = false;
-    win = false;
-    pause = false;
-    instructions = false;
-    kanye = false;
-    kim = false;
-    taylor = false;
-    miley = false;
-    score = 0;
-    h.health = 1000;
-    for (int j = ro.size()-1; j>=0; j--) {
-      ro.remove(j);
-    }
-    for (int j = o.size()-1; j>=0; j--) {
-      o.remove(j);
-    }
-    for (int j = r.size()-1; j>=0; j--) {
-      r.remove(j);
-    }
+    restart();
   }
   if (lose == true) {
     background(loseScreen);
@@ -349,5 +307,31 @@ void mousePressed() {
     win = false;
     start = true;
   }
+}
+
+void restart() {
+  start = true;
+  game = false;
+  stop = false;
+  lose = false;
+  win = false;
+  pause = false;
+  instructions = false;
+  kanye = false;
+  kim = false;
+  taylor = false;
+  miley = false;
+  score = 0;
+  h.health = 1000;
+  for (int j = ro.size()-1; j>=0; j--) {
+    ro.remove(j);
+  }
+  for (int j = o.size()-1; j>=0; j--) {
+    o.remove(j);
+  }
+  for (int j = r.size()-1; j>=0; j--) {
+    r.remove(j);
+  }
+  m.loc.set(m.x/2, height-m.y/2);
 }
 

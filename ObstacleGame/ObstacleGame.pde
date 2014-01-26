@@ -202,11 +202,11 @@ void draw() {
     text("Pause", width-200, 60);
     if ( score>= 2) {
       game = false;
-      decision1 = true;
+      decision = true;
     }
   }
-  if (decision1 == true) {
-    dlevel1.display();
+  if (decision == true) {
+    d.display();
   }
   if (decision1 == true) {
     dlevel1.display();

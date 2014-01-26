@@ -200,7 +200,7 @@ void draw() {
       game = false;
       lose = true;
     }
-    if (score >= 70) {
+    if (score >= 60) {
       game = false;
       win = true;
     }
@@ -209,12 +209,14 @@ void draw() {
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
     text("Pause", width-200, 60);
-    if ( score == 10) {
+    if ( score == 10 && game == true && level1 == true) {
       game = false;
+      level1 = false;
       decision1 = true;
     }
-    if (score == 30) {
+    if (score == 30 && game == true && level2 == true) {
       game = false;
+      level2 = false;
       decision2 = true;
     }
   }
@@ -302,13 +304,13 @@ void mousePressed() {
     decision1 = false;
     game = true;
     level2 = true;
-    score+= 1;
+    score+= 10;
   }
   if (decision1 == true && mouseX >= dlevel1.rect2x && mouseX<= dlevel1.rect2x+dlevel1.rect2w && mouseY >= dlevel1.rect2y && mouseY <= dlevel1.rect2y+dlevel1.recth) {
     decision1 = false;
     game = true;
     level2 = true;
-    h.health-=100;
+    h.health-=200;
   }
   if (decision2 == true && mouseX >= dlevel2.rect1x && mouseX<= dlevel2.rect1x+dlevel2.rect1w && mouseY >= dlevel2.rect1y && mouseY <= dlevel2.rect1y+dlevel2.recth) {
     decision2 = false;
@@ -320,7 +322,7 @@ void mousePressed() {
     decision2 = false;
     game = true;
     level3 = true;
-    h.health-=200;
+    h.health-=400;
   }
   if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
     game = true;

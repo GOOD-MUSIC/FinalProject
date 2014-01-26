@@ -24,16 +24,16 @@ class Obstacle {
     kanyeObstacle1 = loadImage("SwayObstacle.png");
     kimObstacle1 = loadImage("Kimobstacle.png");
     taylorObstacle1 = loadImage("HarryStylesObstacle.png");
-    mileyObstacle1 = loadImage("WreckingBallObstacle.png");
+    mileyObstacle1 = loadImage("mileyObstacle1.png");
     // TEMPORARY -- WAITING FOR MARISA
-    kanyeObstacle2 = loadImage("SwayObstacle.png");
+    kanyeObstacle2 = loadImage("kanyeObstacle2.png");
     kimObstacle2 = loadImage("Kimobstacle.png");
     taylorObstacle2 = loadImage("HarryStylesObstacle.png");
-    mileyObstacle2 = loadImage("WreckingBallObstacle.png");
+    mileyObstacle2 = loadImage("mileyObstacle2.png");
     kanyeObstacle3 = loadImage("SwayObstacle.png");
     kimObstacle3 = loadImage("Kimobstacle.png");
     taylorObstacle3 = loadImage("HarryStylesObstacle.png");
-    mileyObstacle3 = loadImage("WreckingBallObstacle.png");
+    mileyObstacle3 = loadImage("mileyObstacle3.png");
   }
 
   void display() {

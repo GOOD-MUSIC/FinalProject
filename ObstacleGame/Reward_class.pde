@@ -24,16 +24,16 @@ class Reward {
     kanyeReward1 = loadImage("YeezusAlbumBonus.jpg");
     kimReward1 = loadImage("NorthWestBonus.png");
     taylorReward1 = loadImage("GuitarBonus.png");
-    mileyReward1 = loadImage("MoneyBonus.png");
+    mileyReward1 = loadImage("mileyReward1.png");
     //TEMPORARY -- WAITING FOR MARISA
     kanyeReward2 = loadImage("YeezusAlbumBonus.jpg");
     kimReward2 = loadImage("NorthWestBonus.png");
     taylorReward2 = loadImage("GuitarBonus.png");
-    mileyReward2 = loadImage("MoneyBonus.png");
+    mileyReward2 = loadImage("mileyReward2.png");
     kanyeReward3 = loadImage("YeezusAlbumBonus.jpg");
     kimReward3 = loadImage("NorthWestBonus.png");
-    taylorReward3 = loadImage("GuitarBonus.png");
-    mileyReward3 = loadImage("MoneyBonus.png");
+    taylorReward3 = loadImage("mileyReward1.png");
+    mileyReward3 = loadImage("mileyReward3.png");
   }
 
   void display() {

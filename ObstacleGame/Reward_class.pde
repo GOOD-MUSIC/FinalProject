@@ -21,18 +21,17 @@ class Reward {
     vel1 = new PVector(-2, 0);
     vel2 = new PVector(-2.5, 0);
     vel3 = new PVector(-3, 0);
-    kanyeReward1 = loadImage("YeezusAlbumBonus.jpg");
-    kimReward1 = loadImage("NorthWestBonus.png");
-    taylorReward1 = loadImage("mileyReward1.png");
+    kanyeReward1 = loadImage("kanyeReward1.jpg");
+    kimReward1 = loadImage("kimReward1.jpg");
+    taylorReward1 = loadImage("taylorReward1.png");
     mileyReward1 = loadImage("mileyReward1.png");
-    //TEMPORARY -- WAITING FOR MARISA
-    kanyeReward2 = loadImage("YeezusAlbumBonus.jpg");
-    kimReward2 = loadImage("NorthWestBonus.png");
-    taylorReward2 = loadImage("mileyReward1.png");
+    kanyeReward2 = loadImage("kanyeReward2.jpg");
+    kimReward2 = loadImage("kimReward2.jpg");
+    taylorReward2 = loadImage("taylorReward2.png");
     mileyReward2 = loadImage("mileyReward2.png");
-    kanyeReward3 = loadImage("YeezusAlbumBonus.jpg");
-    kimReward3 = loadImage("NorthWestBonus.png");
-    taylorReward3 = loadImage("mileyReward1.png");
+    kanyeReward3 = loadImage("kimReward3.png");
+    kimReward3 = loadImage("kimReward3.png");
+    taylorReward3 = loadImage("taylorReward3.jpg");
     mileyReward3 = loadImage("mileyReward3.jpg");
   }
 

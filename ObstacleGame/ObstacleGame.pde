@@ -87,20 +87,18 @@ void setup() {
   ro.add(new Reward(width, height-200));
   m = new Mover();
   h = new HealthBar();
-  kanyeBackground1 = loadImage("StageBackground.jpg");
-  kimBackground1 = loadImage("JennerBackground.jpg");
-  taylorBackground1 = loadImage("NashvilleBackground.jpg");
-  mileyBackground1 = loadImage("CyrusBackground.jpg");
-  //TEMPORARY BACKGROUNDS*****
-  kanyeBackground2 = loadImage("winTemp.jpg");
-  kimBackground2 = loadImage("winTemp.jpg");
-  taylorBackground2 = loadImage("winTemp.jpg");
-  mileyBackground2 = loadImage("winTemp.jpg");
-  kanyeBackground3 = loadImage("winTemp.jpg");
-  kimBackground3 = loadImage("winTemp.jpg");
-  taylorBackground3 = loadImage("winTemp.jpg");
-  mileyBackground3 = loadImage("winTemp.jpg");
-  //TEMPORARY
+  kanyeBackground1 = loadImage("kanyeBackground1.jpg");
+  kimBackground1 = loadImage("kimBackground1.jpg");
+  taylorBackground1 = loadImage("taylorBackground1.jpg");
+  mileyBackground1 = loadImage("mileyBackground1.jpg");
+  kanyeBackground2 = loadImage("kanyeBackground2.jpg");
+  kimBackground2 = loadImage("kimBackground2.jpg");
+  taylorBackground2 = loadImage("taylorBackground2.jpg");
+  mileyBackground2 = loadImage("mileyBackground2.jpg");
+  kanyeBackground3 = loadImage("kanyeBackground3.jpg");
+  kimBackground3 = loadImage("kanyeBackground3.jpg");
+  taylorBackground3 = loadImage("taylorBackground3.jpg");
+  mileyBackground3 = loadImage("mileyBackground3.jpg");
   dlevel1 = new Decision();
   dlevel2 = new Decision();
   Kanye = loadImage("YeezyCharacter.png");

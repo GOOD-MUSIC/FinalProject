@@ -131,6 +131,14 @@ void draw() {
     text("Welcome To...", 150, 75);
     textSize(15);
     text("INSTRUCTIONS", 500, 320);
+    if (mouseX<instructionsx+instructionsw && mouseX>instructionsx && mouseY<instructionsy+instructionsh && mouseY>instructionsy) {
+      fill(360);
+      rect(instructionsx, instructionsy, instructionsw, instructionsh);
+      textAlign(CENTER);
+      fill(0);
+      textSize(15);
+      text("INSTRUCTIONS", 500, 320);
+    }
     fill(0);
     String p = "Choose a Player:";
     text(p, 50, heady+25, 100, 100);
@@ -152,11 +160,22 @@ void draw() {
     rectMode(CENTER);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
-    text("PLAY", width/2, height-100);
+    text("PLAY", width/2, height-90);
+    if (mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+      fill(0);
+      textAlign(CENTER);
+      textSize(25);
+      rectMode(CENTER);
+      stroke(360);
+      rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+      fill(360);
+      text("PLAY", width/2, height-90);
+    }
   }
   if (game == true) {
     checkbackground();
     fill(0, 0, 190);
+    textSize(25);
     text("Score: " + score, scorex, scorey);
     if (millis() - rTime >= 3000) {
       rTime = millis();
@@ -208,7 +227,14 @@ void draw() {
     rectMode(CENTER);
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
-    text("Pause", width-200, 60);
+    text("Pause", width-200, 55);
+    if (mouseX < pausebuttonx + pausebuttonw/2 && mouseX > pausebuttonx - pausebuttonw/2 && mouseY < pausebuttony + pausebuttonh/2 && mouseY > pausebuttony-pausebuttonh/2) {
+      fill(360);
+      rectMode(CENTER);
+      rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
+      fill(240,100,100);
+      text("Pause", width-200, 55);
+    }
     if ( score == 10 && game == true && level1 == true) {
       game = false;
       level1 = false;
@@ -265,6 +291,24 @@ void draw() {
     rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
     fill(0);
     text("RESTART", restartbuttonx, restartbuttony+5);
+    if (mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
+      fill(0);
+      textAlign(CENTER);
+      textSize(30);
+      rectMode(CENTER);
+      stroke(360);
+      rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
+      fill(360);
+      text("PLAY", width/2, height-90);
+    }
+    if (mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) { 
+      textSize(20);
+      fill(0);
+      rectMode(CENTER);
+      rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+      fill(360);
+      text("RESTART", restartbuttonx, restartbuttony+5);
+    }
   }
 
   if (restart == true) {
@@ -283,6 +327,14 @@ void draw() {
     fill(0);
     textSize(25);
     text("RESTART", restartbuttonx, restartbuttony+5);
+    if (mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) { 
+      textSize(20);
+      fill(0);
+      rectMode(CENTER);
+      rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+      fill(360);
+      text("RESTART", restartbuttonx, restartbuttony+5);
+    }
   }
   if (win == true) {
     background(winScreen);
@@ -296,6 +348,14 @@ void draw() {
     fill(0);
     textSize(25);
     text("RESTART", restartbuttonx, restartbuttony+5);
+    if (mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) { 
+      textSize(20);
+      fill(0);
+      rectMode(CENTER);
+      rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+      fill(360);
+      text("RESTART", restartbuttonx, restartbuttony+5);
+    }
   }
 }
 

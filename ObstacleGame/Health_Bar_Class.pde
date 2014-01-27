@@ -11,6 +11,9 @@ class HealthBar {
 
   void display() {
     fill(360);
+    if(miley == true){
+      fill(260, 100, 100);
+    }
     textSize(20);
     text("Health: " + health/10, healthX, healthY); 
     fill(126, 100, 100);

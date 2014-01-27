@@ -176,6 +176,9 @@ void draw() {
     checkbackground();
     fill(0, 0, 190);
     textSize(25);
+    if (miley == true) {
+      fill(260, 100, 100);
+    }
     text("Score: " + score, scorex, scorey);
     if (millis() - rTime >= 3000) {
       rTime = millis();
@@ -232,7 +235,7 @@ void draw() {
       fill(360);
       rectMode(CENTER);
       rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
-      fill(240,100,100);
+      fill(240, 100, 100);
       text("Pause", width-200, 55);
     }
     if ( score == 10 && game == true && level1 == true) {

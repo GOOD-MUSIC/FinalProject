@@ -24,8 +24,6 @@ boolean miley = false;
 boolean level1 = false;
 boolean level2 = false;
 boolean level3 = false;
-//boolean levelWin1 = false;
-//boolean levelWin2 = false;
 PImage kanyeBackground1;
 PImage kimBackground1;
 PImage taylorBackground1;
@@ -138,7 +136,7 @@ void draw() {
       fill(0);
       textSize(15);
       text("INSTRUCTIONS", 500, 320);
-    }
+    } //changes color of box if mouse rolls over it
     fill(0);
     String p = "Choose a Player:";
     text(p, 50, heady+25, 100, 100);
@@ -147,8 +145,8 @@ void draw() {
     image(kanyeHead, kanyex, heady);
     image(kimHead, kimx, heady);
     image(taylorHead, taylorx, heady);
-    image(mileyHead, mileyx, heady);
-    restart();
+    image(mileyHead, mileyx, heady); //displays the heads of the characters to choose a character
+    restart(); //keeps initial settings everytime the game is at the start screen
   }
 
   if (instructions == true) {
@@ -170,86 +168,86 @@ void draw() {
       rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
       fill(360);
       text("PLAY", width/2, height-90);
-    }
+    } //changes the color of box if mouse rolls over it
   }
   if (game == true) {
-    checkbackground();
+    checkbackground(); //checks background according to character and level
     fill(0, 0, 190);
     textSize(25);
     if (miley == true) {
       fill(260, 100, 100);
     }
-    text("Score: " + score, scorex, scorey);
+    text("Score: " + score, scorex, scorey); // displays score
     if (millis() - rTime >= 3000) {
       rTime = millis();
       r.add(new Reward(width, height-50));
-    }
+    } //adds Rewards as a function of time
     if (millis() - oTime >= 7500) {
       oTime = millis();
       o.add(new Obstacle());
       ro.add(new Reward(width, height-200));
-    }
+    } //adds Obstacles and more Rewards as a function of time
     m.display();
-    m.move();
-    h.display();
-    for (int d = r.size()-1; d>=0; d--) {
+    m.move(); //displays and moves the Mover
+    h.display(); //displays the health bar
+    for (int d = r.size()-1; d>=0; d--) { //for loop for the reward which displays and moves it
       Reward rew = r.get(d);
       rew.display();
       rew.move();
       if (dist(rew.loc.x, 0, m.loc.x, 0) <= 90 && dist(0, rew.loc.y, 0, m.loc.y) <= 125) {
         r.remove(d);
         score+=1;
-      }
+      } //removes rewards if it touches the mover and adds one to score
     }
-    for (int i = o.size()-1; i>=0; i--) {
+    for (int i = o.size()-1; i>=0; i--) { //for loop for the Obstacle which displays and moves it
       Obstacle obs = o.get(i);
       obs.display();
       obs.move();
       if (dist(obs.loc.x, 0, m.loc.x, 0) <= 127.5 && dist(0, obs.loc.y, 0, m.loc.y) <= 162.5) {
         h.health -= .5;
-      }
+      } //depletes health if the  mover touches the Obstacle
     }
-    for (int j = ro.size()-1; j>=0; j--) {
+    for (int j = ro.size()-1; j>=0; j--) { //for loop for the reward which displays and moves it
       Reward reward = ro.get(j);
       reward.display();
       reward.move();
       if (dist(reward.loc.x, 0, m.loc.x, 0) <= 90 && dist(0, reward.loc.y, 0, m.loc.y) <=125) {
         ro.remove(j);
         score+=1;
-      }
+      } //removes rewards if it touches the mover and adds one to score
     }
     if (h.health <= 0) {
       game = false;
       lose = true;
-    }
+    } //you lose the game if your health gets to 0
     if (score >= 60) {
       game = false;
       win = true;
-    }
+    } //you win the game if your score gets to 60
     fill(240, 100, 100);
     rectMode(CENTER);
     rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
     fill(360);
-    text("Pause", width-200, 55);
+    text("Pause", width-200, 55); // displays pause button
     if (mouseX < pausebuttonx + pausebuttonw/2 && mouseX > pausebuttonx - pausebuttonw/2 && mouseY < pausebuttony + pausebuttonh/2 && mouseY > pausebuttony-pausebuttonh/2) {
       fill(360);
       rectMode(CENTER);
       rect(pausebuttonx, pausebuttony, pausebuttonw, pausebuttonh);
       fill(240, 100, 100);
       text("Pause", width-200, 55);
-    }
+    } //changes color of Pause button if the mouse is on the button
     if ( score == 10 && game == true && level1 == true) {
       game = false;
       level1 = false;
       decision1 = true;
-    }
+    } //if score is 10 it will end level 1 and make the first decision true
     if (score == 30 && game == true && level2 == true) {
       game = false;
       level2 = false;
       decision2 = true;
-    }
+    } //if score is 30 it will end level 2 and make the second decision true
   }
-  if (decision1 == true) {
+  if (decision1 == true) { //displays decision 1
     dlevel1.display();
     for (int j = ro.size()-1; j>=0; j--) {
       ro.remove(j);
@@ -259,10 +257,10 @@ void draw() {
     }
     for (int j = r.size()-1; j>=0; j--) {
       r.remove(j);
-    }
-    m.loc.set(m.x/2, height-m.y/2);
+    } //removes all Rewards and Obstacles from the screen
+    m.loc.set(m.x/2, height-m.y/2); //resets the location of the mover to its orignal location
   }
-  if (decision2 == true) {
+  if (decision2 == true) { //displays decision 2
     dlevel2.display();
     for (int j = ro.size()-1; j>=0; j--) {
       ro.remove(j);
@@ -272,26 +270,26 @@ void draw() {
     }
     for (int j = r.size()-1; j>=0; j--) {
       r.remove(j);
-    }
-    m.loc.set(m.x/2, height-m.y/2);
+    } //removes al Rewards and obstacles from the screen
+    m.loc.set(m.x/2, height-m.y/2); //resets the location of the mover to its original location
   }
-  if (pause == true) {
+  if (pause == true) { //displays pause screen
     checkbackground();
     fill(240, 80, 80, 75);
     rect(width/2, height/2, width, height);
     fill(0);
     textSize(50);
-    text("GAME PAUSED", width/2, height/2);
+    text("GAME PAUSED", width/2, height/2); //displays Game Paused
     rectMode(CENTER);
     fill(0, 0, 100);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
     textSize(30);
-    text("PLAY", width/2, height-90);
+    text("PLAY", width/2, height-90); //displays Play button
     textSize(20);
     fill(0, 0, 100);
     rectMode(CENTER);
-    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh); //displays restart button
     fill(0);
     text("RESTART", restartbuttonx, restartbuttony+5);
     if (mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
@@ -303,7 +301,7 @@ void draw() {
       rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
       fill(360);
       text("PLAY", width/2, height-90);
-    }
+    } // Play button changes color if mouse is over the button
     if (mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) { 
       textSize(20);
       fill(0);
@@ -311,25 +309,25 @@ void draw() {
       rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
       fill(360);
       text("RESTART", restartbuttonx, restartbuttony+5);
-    }
+    } // restart button changes color if mouse is over the button
   }
 
-  if (restart == true) {
+  if (restart == true) { //runs the restart function
     restart();
   }
 
-  if (lose == true) {
+  if (lose == true) { //shows the lose screen
     background(loseScreen);
     textAlign(CENTER);
     textSize(40);
     fill(0);
-    text("You lost. I guess Hollywood's not for everyone.", width/2, height-100);
+    text("You lost. I guess Hollywood's not for everyone.", width/2, height-100); //displays lose text
     fill(0, 0, 100);
     rectMode(CENTER);
     rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
     fill(0);
     textSize(25);
-    text("RESTART", restartbuttonx, restartbuttony+5);
+    text("RESTART", restartbuttonx, restartbuttony+5); //displays restart button
     if (mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) { 
       textSize(20);
       fill(0);
@@ -337,17 +335,17 @@ void draw() {
       rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
       fill(360);
       text("RESTART", restartbuttonx, restartbuttony+5);
-    }
+    } //changes color of restart button if the mouse is over the button
   }
-  if (win == true) {
+  if (win == true) { // displays the win screen
     background(winScreen);
     textAlign(CENTER);
     textSize(40);
     fill(0, 0, 100);
-    text("Congratulations! You have made it in Hollywood!", width/2, height-100);
+    text("Congratulations! You have made it in Hollywood!", width/2, height-100); //displays win text
     fill(0, 0, 100);
     rectMode(CENTER);
-    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
+    rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh); //displays restart button
     fill(0);
     textSize(25);
     text("RESTART", restartbuttonx, restartbuttony+5);
@@ -358,7 +356,7 @@ void draw() {
       rect(restartbuttonx, restartbuttony, restartbuttonw, restartbuttonh);
       fill(360);
       text("RESTART", restartbuttonx, restartbuttony+5);
-    }
+    } // changes the color of the restart button if the mouse is over the button
   }
 }
 
@@ -368,98 +366,90 @@ void mousePressed() {
     game = true;
     level2 = true;
     score+= 10;
-  }
+  } //adds 10 points to your score if you answer decision 1 correctly
   if (decision1 == true && mouseX >= dlevel1.rect2x && mouseX<= dlevel1.rect2x+dlevel1.rect2w && mouseY >= dlevel1.rect2y && mouseY <= dlevel1.rect2y+dlevel1.recth) {
     decision1 = false;
     game = true;
     level2 = true;
     h.health-=200;
-  }
+  } //depletes 20 health if you answer decision 1 incorrectly
   if (decision2 == true && mouseX >= dlevel2.rect1x && mouseX<= dlevel2.rect1x+dlevel2.rect1w && mouseY >= dlevel2.rect1y && mouseY <= dlevel2.rect1y+dlevel2.recth) {
     decision2 = false;
     game = true;
     level3 = true;
     score+= 20;
-  }
+  } //adds 20 points to your score if you answer decision 2 correctly
   if (decision2 == true && mouseX >= dlevel2.rect2x && mouseX<= dlevel2.rect2x+dlevel2.rect2w && mouseY >= dlevel2.rect2y && mouseY <= dlevel2.rect2y+dlevel2.recth) {
     decision2 = false;
     game = true;
     level3 = true;
     h.health-=400;
-  }
+  } //depletes 40 health if you answer decision 2 incorrectly
   if (start==true && mouseX<kanyex+headw && mouseX>kanyex && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kanye = true;
     start = false;
     level1 = true;
     restart = false;
-  }
+  } //starts game as Kanye character
   if (start==true && mouseX<kimx+headw && mouseX>kimx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     kim = true;
     start = false;
     level1 = true;
     restart = false;
-  }
+  } //starts game as Kim character
   if (start==true && mouseX<taylorx+headw && mouseX>taylorx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     taylor = true;
     start = false;
     level1 = true;
     restart = false;
-  }
+  } //starts game as Taylor character
   if (start==true && mouseX<mileyx+headw && mouseX>mileyx && mouseY<heady+headh && mouseY>heady) {
     game = true;
     miley = true;
     start = false;
     level1 = true;
     restart = false;
-  }
+  } //starts game as Miley character
   if (start==true && mouseX<instructionsx+instructionsw && mouseX>instructionsx && mouseY<instructionsy+instructionsh && mouseY>instructionsy) {
     instructions = true;
     start = false;
-  }
+  } //displays instructions
   if (instructions==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
     instructions = false;
     start = true;
-  }
+  } //goes back to start screen from instructions
   if (game == true && mouseX < pausebuttonx + pausebuttonw/2 && mouseX > pausebuttonx - pausebuttonw/2 && mouseY < pausebuttony + pausebuttonh/2 && mouseY > pausebuttony-pausebuttonh/2) {
     game = false;
     pause = true;
-  }
+  } //displays pause screen from game
   if (pause==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
     pause = false;
     game = true;
-  }
-  //  if (levelWin1==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
-  //    levelWin1 = false;
-  //    decision1 = true;
-  //  }
-  //  if (levelWin2==true && mouseX<playbuttonx+playbuttonw/2 && mouseX>playbuttonx-playbuttonw/2 && mouseY<playbuttony+playbuttonh/2 && mouseY>playbuttony-playbuttonh/2) {
-  //    levelWin2 = false;
-  //    decision2 = true;
-  //  }
+  } //goes back to game from the pause screen
   if (pause==true && mouseX<restartbuttonx+restartbuttonw/2 && mouseX>restartbuttonx-restartbuttonw/2 && mouseY<restartbuttony+restartbuttonh/2 && mouseY>restartbuttony-restartbuttonh/2) {
     restart = true;
     game = false;
     pause = false;
     start = true;
-  }
+  } //restarts the game from the pause screen
   if (lose==true && mouseX<restartbuttonx + restartbuttonw/2 && mouseX>restartbuttonx - restartbuttonw/2 && mouseY<restartbuttony + restartbuttonh/2 && mouseY>restartbuttony - restartbuttonh/2) {
     restart = true;
     game = false;
     lose = false;
     start = true;
-  }
+  } //restarts the game from the lose screeen
   if (win==true && mouseX<restartbuttonx + restartbuttonw/2 && mouseX>restartbuttonx - restartbuttonw/2 && mouseY<restartbuttony + restartbuttonh/2 && mouseY>restartbuttony - restartbuttonh/2) {
     restart = true;
     game = false;
     win = false;
     start = true;
-  }
+  } //restarts the game from the win screen
 }
 
-void restart() {
+void restart() { //restarts the game by setting all the functions to their inital values and removes all Obstacles and Rewards from screen and resets the location of the Mover
   start = true;
   game = false;
   stop = false;
@@ -491,7 +481,7 @@ void restart() {
   m.loc.set(m.x/2, height-m.y/2);
 } 
 
-void checkbackground() {
+void checkbackground() { //checks for the character and which level to determine which background to display
   if (kanye == true) {
     if (level1 == true) {
       background(kanyeBackground1);

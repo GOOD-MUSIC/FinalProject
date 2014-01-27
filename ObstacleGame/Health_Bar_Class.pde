@@ -15,7 +15,7 @@ class HealthBar {
       fill(260, 100, 100);
     }
     textSize(20);
-    text("Health: " + health/10, healthX, healthY); 
+    text("Health: " + health/10, healthX, healthY); // displays health 
     fill(126, 100, 100);
     rectMode(CORNER);
     noStroke();
@@ -24,7 +24,7 @@ class HealthBar {
       fill(360, 100, 100);
       noStroke();
       rect(healthX-60, healthY + 5, health*.12, 10);
-    }
+    } //makes health red if it is below 20
   }
 }
 

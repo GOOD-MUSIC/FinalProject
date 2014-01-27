@@ -87,7 +87,7 @@ class Decision {
         rect1text = "Rock the new look";
         rect2text = "Redye them brown";
       }
-    }
+    } // uses string for questions and answers according to which decision and which character
     textAlign(CENTER);
     fill(360);
     if (taylor) {
@@ -97,7 +97,7 @@ class Decision {
       fill(275, 100, 100);
     }
     rect(rect1x, rect1y, rect1w, recth);
-    rect(rect2x, rect2y, rect2w, recth);
+    rect(rect2x, rect2y, rect2w, recth); // displays both answer rectangles
     fill(0);
     textSize(size);
     if (kanye) {
@@ -109,7 +109,7 @@ class Decision {
     if (taylor) {
       fill(57, 100, 100);
     }
-    text(question, questionx, questiony);
+    text(question, questionx, questiony); // displays question
     textSize(size/2);
     if (kanye) {
       fill(0);
@@ -180,7 +180,7 @@ class Decision {
         fill(275, 100, 100);
         text(rect2text, rect2x + rect2w/2, rect2y + recth/2);
       }
-    }
+    } //changes fill according to character and changes color of box if mouse is over box
     rectMode(CENTER);
   }
 }

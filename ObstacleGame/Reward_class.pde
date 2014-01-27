@@ -81,7 +81,7 @@ class Reward {
         image(mileyReward3, loc.x, loc.y);
       }
     }
-  }
+  } //displays reward according to level and character
   void move() {
     if (level1 == true) {
       loc.add(vel1);
@@ -93,5 +93,5 @@ class Reward {
       loc.add(vel3);
     }
   }
-}
+} //changes velocity according to which level is used
 

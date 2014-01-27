@@ -80,7 +80,7 @@ class Obstacle {
       if (level3 == true) {
         image(mileyObstacle3, loc.x, loc.y);
       }
-    }
+    } // displays Obstacle according to which character is used and which level it is on
     imageMode(CORNER);
   }
   void move() {
@@ -92,7 +92,7 @@ class Obstacle {
     }
     if (level3 == true) {
       loc.add(vel3);
-    }
+    } //changes the velocity according to which level it is on
   }
 }
 

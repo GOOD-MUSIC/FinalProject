@@ -32,7 +32,7 @@ class Mover {
     }
     if (miley == true) {
       image(Miley, loc.x, loc.y, x, y);
-    }
+    } //displays mover according to character
     imageMode(CORNER);
   }
   void move() {
@@ -47,12 +47,12 @@ class Mover {
     }
     if (keyPressed == true && key == 's' && loc.y<height-y/2) {
       loc.add(down);
-    }
+    } // moves mover according to which key is pressed
     if (loc.y+y/2<height) {
       vel+=grav;
       loc.y+=vel; 
       vel*=-0.001*(height-y);
-    }
+    } // creates gravity which is a function of the height of the mover
   }
 }
 

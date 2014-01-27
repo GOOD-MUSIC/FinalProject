@@ -153,8 +153,8 @@ void draw() {
     background(0);
     fill(0, 0, 100);
     textAlign(CENTER);
-    textSize(25);
-    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Jump and move to collect bonuses and avoid obstacles. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n a-move left; s-move down; d-move right; w-jump up \n Increase your score to 60 before the health bar reaches 0 to win the game! \n HAVE FUN.", width/2, 50);
+    textSize(20);
+    text("HOW TO PLAY: \n Choose your favorite celebrity. \n Jump and move to collect bonuses and avoid obstacles. \n Use the 'a', 's', 'd', and 'w' keys to control your player. \n a-move left; s-move down; d-move right; w-jump up \n If you get to 10 points you get to make a Decision \n according to our character. If you choose correctly, \n you get 10 points, if you choose incorrectly, you lose 20 health. \n If you get to 30 points you get to the second Decision. \n If you get this one correct you get 20 points! \n If it is incorrect you lose 40 health :( \n Increase your score to 60 before the health bar reaches 0 to win the game! \n HAVE FUN.", width/2, 50);
     rectMode(CENTER);
     rect(playbuttonx, playbuttony, playbuttonw, playbuttonh);
     fill(0);
